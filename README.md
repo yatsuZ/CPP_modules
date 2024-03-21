@@ -22,20 +22,10 @@ en C il y a les Structure et en C++ les Classes qui son des notion assez similai
 
 En somme, le passage du C au C++ permet aux développeurs d'accéder à un ensemble plus riche de paradigmes de programmation et d'outils pour créer des systèmes logiciels complexes de manière plus efficace et avec une meilleure gestion des ressources.
 
-## Notion vu dans les modules
-
-### Module 0
-
-
-### Module 1
-
-
-### Module 2
-
-
-### Module 3
-
-
-### Module 4
+|To Do | Fais ? |
+|------|--------|
+|lire tout les enoncer des module de 00 a 04 et rediger la synthe | OUI |
+| me re documenter sur le C++ | Non |
+| commencer le module 00 | NON |
 
 
