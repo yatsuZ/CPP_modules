@@ -9,19 +9,22 @@ c++ -Wall -Wextra -Werror
 
 | Index | Notion                              | compris |
 |-------|-------------------------------------|---------|
-| 1     | Name space                          | NON     |
-| 2     | Flux de stream entrée sortie        | NON     |
-| 3     | Classe Instance                     | NON     |
-| 4     | Attribut membre et fonction membre  | NON     |
-| 5     | This / self                         | NON     |
-| 6     | Initialisation list                 | NON     |
-| 7     | Const                               | NON     |
-| 8     | Encapsulation                       | NON     |
-| 9     | Class vs Struct                     | NON     |
-| 10    | Accessors                           | NON     |
-| 11    | Comparaison                         | NON     |
-| 12    | les attribut et fonction non membre | NON     |
-| 13    | Pointeur sur Membre                 | NON     |
+| 0     | Name space                          | OUI     |
+| 1     | Flux de stream entrée sortie        | OUI     |
+| 2     | Classe Instance                     | OUI     |
+| 3     | Attribut membre et fonction membre  | OUI     |
+| 4     | This / self                         | OUI     |
+| 5     | Initialisation list                 | OUI     |
+| 6     | Const                               | OUI     |
+| 7     | Encapsulation                       | OUI     |
+| 8     | Class vs Struct                     | OUI     |
+| 9     | Accessors                           | OUI     |
+| 10    | Comparaison                         | OUI     |
+| 11    | les attribut et fonction non membre | OUI     |
+| 12    | Pointeur sur Membre                 | OUI     |
+| 13    | New Delete                          | OUI     |
+| 14    | Reference                           | OUI     |
+| 15    | FileStream                          | NON     |
 
 ## Name space
 
@@ -56,20 +59,82 @@ La classe est comment on creee les objet avec sa propre syntaxe avec les destruc
 
 ## Attribut membre et fonction membre
 
+Attribut membre == variable ou autre assignée a la classe
+
+fonction membre dite methode est une fonction qui est assignée a une classe.
+
 ## This / self
+
+
+this est un mot clée (self dans dautre langage), permet de pointer sur linstance meme donc utilise des flecher pour pointer.
 
 ## Initialisation list
 
+C' le fais qu'on puisse directement initiliaser les attrbut membre aux constructeur on respectante cette syntaxe :
+
+```c++
+Sample2::Sample2(char p1, int p2, float p3 ) : a1(p1), a2(p2), a3(p3)
+{
+	...
+}
+```
+
+sa permet de faire plein daute chose que je verrais au fur et a mesure.
+
 ## Const
+
+Const on c on est etais obliger initiliaser pour donner une valeur car assigner n'etais possible.
+
+en c++ on peut initiliaser aux moment du constructeur grace a la l'initialisation de list.
+
+important on peut metre const apres une methode pour dire que j'ammais on ne va faire d'assignation dans cette instance !!
 
 ## Encapsulation
 
+C'est le fais de rendre accessible ou non certaine infroamtion.
+
+>> L'encapsulation permet d'ajouter aisément des règles de validation et des contraintes d'intégrité, par exemple limiter le domaine des valeurs qu'une variable peut prendre (validité) ou vérifier que cette valeur n'entre pas en conflit avec les valeurs d'autres variables (intégrité).
+
+nous avons vu public et private.
+
+private : on peut y acceder seulement dans la classe
+
+public : accessible a peut pres partout
+
 ## Class vs Struct
+
+Pareil juste par defaut les class encapsule par defaut tout en privée et les structure encapsule tout en public par defaut
 
 ## Accessors
 
+c'est des fonction qui servent d'interface pour les attribut privée.
+
+par convention y a les set qui modifie l'atribut et les get qui recuperer en retour l'atribut.
+
 ## Comparaison
+
+bah on peut faire des fonction qui compare structureleent les instance aux lieu de le faire physiquement.
 
 ## les attribut et fonction non 
 
+avec static elle permet de rendre des atribut et ft non membre en gros elles font partie de la classe mais pas des instance.
+
 ## Pointeur sur Membre
+
+en gros on vois comment utiliser des pointeur de fonction et atribut membre.
+
+## New Dellete
+
+Notre nouveaux malloc free se sont des mauvaise idée car sa napelle pas le constructeur et destructeur.
+
+Et c'est avec sa qu'on peut faire des tableaux / list.
+
+## Reference
+
+sa ressmeble a un pointeur c'est tjr constant sur la meme chose et est souvent defference genre pas besoin de remetre des symbole ou autre pour modifier est assigner mais on ne peut pas changer l'adresse.
+
+au lieux de metre un * on mets un &.
+
+En gros c pour se simplifier la vie mais les pointeur sa permet de faire + de chose.
+
+## file stream
