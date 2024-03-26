@@ -24,7 +24,8 @@ c++ -Wall -Wextra -Werror
 | 12    | Pointeur sur Membre                 | OUI     |
 | 13    | New Delete                          | OUI     |
 | 14    | Reference                           | OUI     |
-| 15    | FileStream                          | NON     |
+| 15    | FileStream                          | BOF     |
+| 16    | Adhoc polymorphims                  | NON     |
 
 ## Name space
 
@@ -138,3 +139,52 @@ au lieux de metre un * on mets un &.
 En gros c pour se simplifier la vie mais les pointeur sa permet de faire + de chose.
 
 ## file stream
+
+ouais pas trop compris cette notion mais en gros c'est la nouvelle manierre d'interagire avec des fichier en precisent le flux entrée sortie ou autre etc.
+
+## Adhoc polymorphims
+
+aussi appeler surcharge de fonction, permet davoir different fonction ayant la meme fonction et ayant des entrée différente
+
+## Surcharge d'operrateur
+
+la surcharge d'operrateur aussi qui permet de redefinir les opperateur logic.
+
+Partie complexe mais on peut faire des super truc avec. MAis attention il y a a de grand risque de foutre le bordel donc voici des regles a suivre :
+1. La surcharge d'un operateur doit etre naturelle
+2. Est un rapport avec la scémenthique de l'operrateur
+3. Eviter de faire des surcharge d'opperateur.
+
+### Vocabulaire
+
+operation arithémthique :
+
+```bash
++ 1 1 == Notation prefixe / notation fonctionelle
+1 + 1 == Notation infixe
+1 1 + == Notation postfixe / pour calculer les piles
+```
+
+## Forme Canonique
+
+et les forme canonique d'une classe.
+C'est la convention a suivre pour faire une bonne classe.
+
+pour qu'une forme soi canonique voici ce qu'il faut au minimum :
+
+```hpp
+Sample {
+	Sample();									// CANON
+	Sample( Sample const & src);				// CANON
+	~Sample();									// CANON
+	Sample	&operator=( Sample const & rhs);	// CANON
+}
+```
+Si il y a ces 4 ellement alors sa sera une forme canonique de coplien :
+1. Constructeur par defaut
+2. Constructeur par copie
+3. un Destructeur (virtuel mais a voir plus tard)
+4. UN operateur egal
+
+## L'héritage
+
