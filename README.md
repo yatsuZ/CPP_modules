@@ -29,3 +29,7 @@ En somme, le passage du C au C++ permet aux développeurs d'accéder à un ensem
 | commencer le module 00 | NON |
 
 
+## Deffinition
+
+| Notion | def |
+|--------|-----|

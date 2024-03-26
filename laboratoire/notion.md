@@ -188,3 +188,17 @@ Si il y a ces 4 ellement alors sa sera une forme canonique de coplien :
 
 ## L'héritage
 
+Crée une classe parent qui peut avoir un enfant.
+Nouvelle encapsulation -> protected qui peut etre accessible aus enfant.
+
+Pas d'exemple a executer.
+
+A voir le multiple heritage et aussi il y aussi le probléme de l'heritage diamant
+
+## Polymorphisme
+
+avec le mot clée virtuel rendre une fonction dynmaic == methode.
+
+## Abstraction
+
+en gros de ce que j'ai compris c'est le faire davoir des methode pour pouvoir se faire heriter.
