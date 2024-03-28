@@ -74,13 +74,14 @@ Mais si on as plusieur fichier on peut les stocker dans des varible comme certai
 SRC = main.cpp
 ```
 
-il y a des varible spéciaux :
+il y a des varible automatic :
 ```makefile
 $@ nom cible
 $< nom de la premiere dépendance
 $^ liste dépendance
 $? liste dépendance plus récentes que la cible
 $* nom fichier, sans exentsion
+$(@D) Représente le répertoire de la cible, c'est-à-dire le répertoire où le fichier cible sera placé. Il exclut le nom du fichier lui-même.
 ```
 
 [exemple](./02_Classe_Instance/Makefile)
@@ -126,6 +127,15 @@ faire make qui fais :
 
 [exemple](./04_this_self/Makefile)
 
-## version 4
+Nous verrosn aussion la varible .PHONY / Cible factice elle permet de cepecifier les fausse cible qui ne sont pas des fichier comme all, clean fclean et bien d'autre pour 
+pour éviter un conflit avec un fichier du même nom et pour améliorer les performances.
+
+## version 6
+
+Faire un makefile principal qui compilera tout les makefile interieur.
+
+## version 5
 
 j'aimerais rajouter de l'esthethisme comme des couleur barre de chargement ou autre et la libre a mois 
+
+FAIL pas encore reussi

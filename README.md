@@ -26,5 +26,5 @@ En somme, le passage du C au C++ permet aux développeurs d'accéder à un ensem
 |------|--------|
 |lire tout les enoncer des module de 00 a 04 et rediger la synthe | OUI |
 | me re documenter sur le C++ | OUI, je me suis arreter aux D04, regarder [labo](./laboratoire/) |
-| Re apprendre les makefile | NON |
+| Re apprendre les makefile | OUI |
 | commencer le module 00 | NON |
