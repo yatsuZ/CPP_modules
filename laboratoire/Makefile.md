@@ -82,6 +82,9 @@ $^ liste dépendance
 $? liste dépendance plus récentes que la cible
 $* nom fichier, sans exentsion
 $(@D) Représente le répertoire de la cible, c'est-à-dire le répertoire où le fichier cible sera placé. Il exclut le nom du fichier lui-même.
+# $(MAKECMDGOALS) == recuperer largument de make
+# filter-out all == fitre en retiran all
+$(MAKECMDGOALS) permet de recuperer les argument du make
 ```
 
 [exemple](./02_Classe_Instance/Makefile)

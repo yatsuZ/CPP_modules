@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 02:45:08 by yzaoui            #+#    #+#              #
-#    Updated: 2024/03/27 03:10:18 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/03/28 16:03:57 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ clean:
 	rm -f $(OBJ)
 fclean: clean
 	rm -f $(EXEC)
+
+re: fclean all
 
 # Variable spécifique
 
