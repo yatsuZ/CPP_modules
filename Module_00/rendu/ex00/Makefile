@@ -6,11 +6,11 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 22:08:32 by yzaoui            #+#    #+#              #
-#    Updated: 2024/03/26 18:18:16 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/03/29 14:23:02 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all re clean fclean bonus
+.PHONY: all re clean fclean val test 
 
 ############### OBJ de Module 00 exo 00
 
@@ -46,3 +46,9 @@ fclean: clean
 	$(RM) ${PROGRAM_NAME}
 
 re: fclean all
+
+test: all
+	./megaphone
+
+val: all
+	valgrind ./megaphone

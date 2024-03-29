@@ -6,7 +6,16 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/18 22:10:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/03/29 18:51:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./PhoneBook.hpp"
+
+int	main(void)
+{
+	Contact	test;
+
+	test.show_class();
+	return (0);
+}
