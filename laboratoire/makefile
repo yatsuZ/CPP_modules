@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 00:08:18 by yzaoui            #+#    #+#              #
-#    Updated: 2024/03/28 18:56:46 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/03/29 01:25:13 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,14 @@ define print_finished
 endef
 
 define print_progress_bar
-	echo $1
-	echo -n "["
+	if [ $1 -lt $$(($2/2)) ]; then \
+		echo -n "${YELLOW}"; \
+	elif [ $1 -eq $2 ]; then \
+		echo -n ""; \
+	else \
+		echo -n "${DARK_BLUE}"; \
+	fi; \
+	echo -n "["; \
 	progress=0; \
 	while [ $$progress -lt 10 ]; do \
 		if [ $$progress -lt $$(($1*10/$2)) ]; then \
@@ -56,8 +62,8 @@ define print_progress_bar
 		progress=$$((progress+1)); \
 	done; \
 	echo -n "]"; \
-
-	@printf "[$$(($1*100/$2))%%] $$(($1+1))/$2\n";
+	echo -n "${NO_COLOR}"; \
+	printf "[$$(($1*100/$2))%%] $$(($1))/$2\n" \\
 endef
 
 all:
@@ -65,12 +71,52 @@ all:
 	@CURRENT_MAKEFILE=0; \
 	for dir in ${TOUT_LES_MAKE_FILES}; do \
 		$(call print_execution,$$dir); \
+		$(call print_progress_bar, $${CURRENT_MAKEFILE} ,$(NUM_MAKEFILES)); \
 		CURRENT_MAKEFILE=$$((CURRENT_MAKEFILE+1)); \
+		sleep 0.5; \
+		printf "\033[A\033[K"; \
 	done; \
-	echo $$CURRENT_MAKEFILE; \
 	$(call print_finished); \
-	$(call print_progress_bar, $(CURRENT_MAKEFILE) ,$(NUM_MAKEFILES))
+	$(call print_progress_bar, $${CURRENT_MAKEFILE} ,$(NUM_MAKEFILES))
 
+
+# Pareille mais sans utilise de ft
+# all:
+# 	@echo "Cible executer = $(GREEN) $(CIBLE_MAKE_MSG) $(NO_COLOR)"
+# 	@CURRENT_MAKEFILE=0; \
+# 	for dir in ${TOUT_LES_MAKE_FILES}; do \
+# 		echo "	- Execution Makefile du dossier $(BLUE) $$dir $(NO_COLOR) "; \
+# 		echo -n "["; \
+# 		progress=0; \
+# 		while [ $$progress -lt 10 ]; do \
+# 			if [ $$progress -lt $$((CURRENT_MAKEFILE*10/$(NUM_MAKEFILES))) ]; then \
+# 				echo -n "#"; \
+# 			else \
+# 				echo -n " "; \
+# 			fi; \
+# 			progress=$$((progress+1)); \
+# 		done; \
+# 		echo -n "]"; \
+# 		echo -n " $$((CURRENT_MAKEFILE*100/$(NUM_MAKEFILES)))% $$((CURRENT_MAKEFILE+1))/$(NUM_MAKEFILES)"; \
+# 		echo ; \
+# 		sleep 0.5; \
+# 		printf "\033[A"; \
+# 		printf "\033[K"; \
+# 		CURRENT_MAKEFILE=$$((CURRENT_MAKEFILE+1)); \
+# 	done; \
+# 	echo "$(DARK_BLUE)FIN D'EXECUTION$(NO_COLOR)"; \
+# 	progress=0; \
+# 	echo -n "["; \
+# 	while [ $$progress -lt 10 ]; do \
+# 		if [ $$progress -lt $$((CURRENT_MAKEFILE*10/$(NUM_MAKEFILES))) ]; then \
+# 			echo -n "#"; \
+# 		else \
+# 			echo -n " "; \
+# 		fi; \
+# 		progress=$$((progress+1)); \
+# 	done; \
+# 	echo -n "]"; \
+# 	echo -n "[$$((CURRENT_MAKEFILE*100/$(NUM_MAKEFILES)))%] $$((CURRENT_MAKEFILE))/$(NUM_MAKEFILES)"
 
 
 fclean : all

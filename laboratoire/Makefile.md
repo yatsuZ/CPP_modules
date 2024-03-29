@@ -137,8 +137,11 @@ pour éviter un conflit avec un fichier du même nom et pour améliorer les perf
 
 Faire un makefile principal qui compilera tout les makefile interieur.
 
+utilise lq commande:
+```makefile
+make -C [dossier]
+```
+
 ## version 5
 
-j'aimerais rajouter de l'esthethisme comme des couleur barre de chargement ou autre et la libre a mois 
-
-FAIL pas encore reussi
+FAIS j'ai utilise plusieur notion mais pour resumer c'est on peut faire des condition logique usage de variable est faire lusage de fonction ce qui est compliquer car comprendre comme utiliser tout cela dans un makefile.
