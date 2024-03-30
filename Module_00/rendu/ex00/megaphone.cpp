@@ -6,11 +6,12 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:08:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/29 16:29:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/03/30 01:15:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
 void	ft_magaphone(char *str)
 {

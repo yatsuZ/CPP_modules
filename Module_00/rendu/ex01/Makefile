@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 22:08:32 by yzaoui            #+#    #+#              #
-#    Updated: 2024/03/29 18:52:10 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/03/30 01:19:37 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ fclean: clean
 re: fclean all
 
 test: all
-	./megaphone
+	./${PROGRAM_NAME}
 
 val: all
-	valgrind ./megaphone
+	valgrind ./${PROGRAM_NAME}

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:31:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/29 17:48:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/03/30 01:18:43 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 # define CONTACT_HPP
 
 #include "./import.h"
-#include <string>
 
 class Contact
 {
 private:
-	char	*_first_name;
-	char	*_last_name;
-	char	*_nickname;
-	char	*_phone_number;
-	char	*_dark_secret;
+	std::string	_first_name;
+	std::string	_last_name;
+	std::string	_nickname;
+	std::string	_phone_number;
+	std::string	_dark_secret;
 public:
 	Contact();
+	Contact(std::string fn, std::string ln, std::string nm, std::string pn, std::string ds);
 	~Contact();
 
 //  Les ft get
-	char	*get_first_name(void) const;
-	char	*get_last_name(void) const;
-	char	*get_nickname(void) const;
-	char	*get_phone_number(void) const;
-	char	*get_dark_secret(void) const;
+	std::string	get_first_name(void) const;
+	std::string	get_last_name(void) const;
+	std::string	get_nickname(void) const;
+	std::string	get_phone_number(void) const;
+	std::string	get_dark_secret(void) const;
 //  Les ft set
 	void	set_first_name(void);
 	void	set_last_name(void);

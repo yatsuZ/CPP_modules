@@ -6,22 +6,27 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:54:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/29 18:55:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/03/30 02:08:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./import.h"
 
-char	*get_input(char *msg)
+std::string get_input(std::string msg)
 {
-	char	*input = NULL;
-	char	*yellow = "\033[33m";
-	char	*green = "\033[32m";
-	char	*no_color = "\033[0m";
+	std::string	input;
+	std::string	yellow = "\033[33m";
+	std::string	green = "\033[32m";
+	std::string	no_color = "\033[0m";
 
 	std::cout << yellow << msg << green;
-	std::cin >> input;
-	std::cout << no_color << std::endl;
+	std::getline(std::cin, input);
+	std::cout << no_color;
+	if (input.empty())
+	{
+		input = "NULL";
+		std::cout << std::endl;
+	}
 	return (input);
 }
 // else if (color == MAGENTA)
@@ -31,32 +36,28 @@ char	*get_input(char *msg)
 // else if (color == BLANC)
 // 	printf("\033[37m");
 
-int	is_good_name(char *str)
+int	is_good_name(std::string str)
 {
 	unsigned long	i;
 
-	if (!str)
-		return (1);
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] < 'A' || str[i] > 'Z') && (str[i] < 'a' || str[i] > 'a'))
+		if (!(str[i] >= 'A' && str[i] <= 'Z') || !(str[i] >= 'a' && str[i] <= 'z'))
 			return (1);
 		i++;
 	}
 	return (!(str[0] >= 'A' && str[0] <= 'Z'));
 }
 
-int	is_a_legit_number_phone(char *str)
+int	is_a_legit_number_phone(std::string str)
 {
 	unsigned long	i;
 
-	if (!str)
-		return (1);
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] > '9' || str[i] < '0')
+		if (str[i] > '9' || str[i] < '0' || i > 10)
 			return (1);
 		i++;
 	}
