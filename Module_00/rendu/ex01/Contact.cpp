@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:03:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/30 01:47:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/03/30 13:41:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	Contact::set_first_name(void)
 	std::string	str;
 
 	str = get_input("First Name: ");
-	while (is_good_name(str))
+	while (is_good_name(str) && str.empty())
 	{
 		std::cout << "\033[31mNo valid Name for technologie of 80\033[0m" << std::endl;
 		str = get_input("RETRY! First Name: ");
@@ -77,7 +77,7 @@ void	Contact::set_last_name(void)
 	std::string	str;
 
 	str = get_input("Last Name: ");
-	while (is_good_name(str))
+	while (is_good_name(str) && str.empty())
 	{
 		std::cout << "\033[31mNo valid Name for technologie of 80\033[0m" << std::endl;
 		str = get_input("RETRY! Last Name: ");
@@ -90,6 +90,11 @@ void	Contact::set_nickname(void)
 	std::string	str;
 
 	str = get_input("Nick Name: ");
+	while (str.empty() && str.empty())
+	{
+		std::cout << "\033[31mCan not be empty...\033[0m" << std::endl;
+		str = get_input("Retry Nick Name: ");
+	}
 	this->_nickname = str;
 }
 
@@ -98,7 +103,7 @@ void	Contact::set_phone_number(void)
 	std::string	str;
 
 	str = get_input("Phone Number: ");
-	while (is_good_name(str))
+	while (is_good_name(str) && str.empty())
 	{
 		std::cout << "\033[31mNo valPhone Number.\033[0m" << std::endl;
 		str = get_input("RETRY! Phone Number: ");
@@ -111,6 +116,11 @@ void	Contact::set_dark_secret(void)
 	std::string	str;
 
 	str = get_input("Dark Secret: ");
+	while (str.empty() && str.empty())
+	{
+		std::cout << "\033[31mCan not be empty...\033[0m" << std::endl;
+		str = get_input("Dark Secret: ");
+	}
 	this->_dark_secret = str;
 }
 

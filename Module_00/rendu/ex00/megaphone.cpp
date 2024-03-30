@@ -6,38 +6,28 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:08:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/30 01:15:10 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/03/30 13:15:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 
-void	ft_magaphone(char *str)
+void	ft_magaphone(std::string str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		str[i] = std::toupper(str[i]);
-		i++;
-	}
+	for (std::string::iterator i = str.begin(); i != str.end(); i++)
+		*i = std::toupper(*i);
+	std::cout << str;
 }
 
 int main(int argc, char **argv)
 {
-	int i;
+	std::string	str;
 
-	i = 1;
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	while (i < argc)
-	{
-		ft_magaphone(argv[i]);
-		std::cout << argv[i];
-		i++;
-	}
+	for (int i = 1; i < argc ; i++)
+		::ft_magaphone(argv[i]);
 	std::cout << std::endl;
 	return (0);
 }

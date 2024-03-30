@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 22:08:32 by yzaoui            #+#    #+#              #
-#    Updated: 2024/03/30 01:19:37 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/03/30 12:37:40 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -g3 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = PhoneBook
+PROGRAM_NAME = Simulation_PhoneBook
 
 ############### COMMANDE OBLIGATOIRE
 

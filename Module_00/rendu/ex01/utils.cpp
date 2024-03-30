@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:54:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/30 02:08:10 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/03/30 14:01:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ std::string get_input(std::string msg)
 	std::cout << no_color;
 	if (input.empty())
 	{
-		input = "NULL";
+		std::cin.clear();
+		clearerr(stdin);
 		std::cout << std::endl;
 	}
 	return (input);
@@ -41,13 +42,15 @@ int	is_good_name(std::string str)
 	unsigned long	i;
 
 	i = 0;
+	if (str.empty())
+		return (1);
 	while (str[i])
 	{
-		if (!(str[i] >= 'A' && str[i] <= 'Z') || !(str[i] >= 'a' && str[i] <= 'z'))
+		if (!isalpha(str[i]))
 			return (1);
 		i++;
 	}
-	return (!(str[0] >= 'A' && str[0] <= 'Z'));
+	return (!isupper(str[i]));
 }
 
 int	is_a_legit_number_phone(std::string str)
@@ -55,9 +58,11 @@ int	is_a_legit_number_phone(std::string str)
 	unsigned long	i;
 
 	i = 0;
+	if (str.empty())
+		return (1);
 	while (str[i])
 	{
-		if (str[i] > '9' || str[i] < '0' || i > 10)
+		if (isdigit(str[i]) || i > 10)
 			return (1);
 		i++;
 	}
