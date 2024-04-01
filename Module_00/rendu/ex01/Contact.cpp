@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:03:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/30 13:41:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/01 03:16:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	Contact::set_first_name(void)
 	std::string	str;
 
 	str = get_input("First Name: ");
-	while (is_good_name(str) && str.empty())
+	while (is_good_name(str) || str.empty())
 	{
-		std::cout << "\033[31mNo valid Name for technologie of 80\033[0m" << std::endl;
+		std::cout << "\033[31mNo legit Name\033[0m" << std::endl;
 		str = get_input("RETRY! First Name: ");
 	}
 	this->_first_name = str;
@@ -77,9 +77,9 @@ void	Contact::set_last_name(void)
 	std::string	str;
 
 	str = get_input("Last Name: ");
-	while (is_good_name(str) && str.empty())
+	while (is_good_name(str) || str.empty())
 	{
-		std::cout << "\033[31mNo valid Name for technologie of 80\033[0m" << std::endl;
+		std::cout << "\033[31mNo legit Name\033[0m" << std::endl;
 		str = get_input("RETRY! Last Name: ");
 	}
 	this->_last_name = str;
@@ -90,7 +90,7 @@ void	Contact::set_nickname(void)
 	std::string	str;
 
 	str = get_input("Nick Name: ");
-	while (str.empty() && str.empty())
+	while (str.empty())
 	{
 		std::cout << "\033[31mCan not be empty...\033[0m" << std::endl;
 		str = get_input("Retry Nick Name: ");
@@ -103,9 +103,9 @@ void	Contact::set_phone_number(void)
 	std::string	str;
 
 	str = get_input("Phone Number: ");
-	while (is_good_name(str) && str.empty())
+	while (is_a_legit_number_phone(str) || str.empty())
 	{
-		std::cout << "\033[31mNo valPhone Number.\033[0m" << std::endl;
+		std::cout << "\033[31mNo valid Phone Number.\033[0m" << std::endl;
 		str = get_input("RETRY! Phone Number: ");
 	}
 	this->_phone_number = str;
@@ -116,7 +116,7 @@ void	Contact::set_dark_secret(void)
 	std::string	str;
 
 	str = get_input("Dark Secret: ");
-	while (str.empty() && str.empty())
+	while (str.empty())
 	{
 		std::cout << "\033[31mCan not be empty...\033[0m" << std::endl;
 		str = get_input("Dark Secret: ");

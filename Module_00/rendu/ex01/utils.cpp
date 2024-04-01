@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:54:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/30 14:01:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/01 03:19:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ std::string get_input(std::string msg)
 	std::cout << yellow << msg << green;
 	std::getline(std::cin, input);
 	std::cout << no_color;
-	if (input.empty())
+	if (std::cin.eof())
 	{
 		std::cin.clear();
 		clearerr(stdin);
@@ -39,32 +39,25 @@ std::string get_input(std::string msg)
 
 int	is_good_name(std::string str)
 {
-	unsigned long	i;
-
-	i = 0;
 	if (str.empty())
 		return (1);
-	while (str[i])
+	for (size_t i = 0; str[i]; i++)
 	{
 		if (!isalpha(str[i]))
 			return (1);
-		i++;
 	}
-	return (!isupper(str[i]));
+	return (0);
 }
 
 int	is_a_legit_number_phone(std::string str)
 {
-	unsigned long	i;
 
-	i = 0;
-	if (str.empty())
+	if (str.empty() || str.length() != 10)
 		return (1);
-	while (str[i])
+	for (size_t i = 0; i < 10; i++)
 	{
-		if (isdigit(str[i]) || i > 10)
+		if (!isdigit(str[i]))
 			return (1);
-		i++;
 	}
-	return (i != 10);
+	return (0);
 }
