@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:54:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/01 03:19:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/02 01:58:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ std::string get_input(std::string msg)
 {
 	std::string	input;
 	std::string	yellow = "\033[33m";
-	std::string	green = "\033[32m";
 	std::string	no_color = "\033[0m";
 
-	std::cout << yellow << msg << green;
+	std::cout << yellow << msg << no_color;
 	std::getline(std::cin, input);
 	std::cout << no_color;
 	if (std::cin.eof())
@@ -30,12 +29,6 @@ std::string get_input(std::string msg)
 	}
 	return (input);
 }
-// else if (color == MAGENTA)
-// 	printf("\033[35m");
-// else if (color == CYAN)
-// 	printf("\033[36m");
-// else if (color == BLANC)
-// 	printf("\033[37m");
 
 int	is_good_name(std::string str)
 {
@@ -60,4 +53,22 @@ int	is_a_legit_number_phone(std::string str)
 			return (1);
 	}
 	return (0);
+}
+
+void	put_the_right_lenght(std::string str)
+{
+	if (str.length() <= 10)
+		std::cout << std::setw(10) << std::setfill(' ') << str << "|";
+	else
+		std::cout << str.substr(0, 9) << ".|";
+}
+
+void	put_the_right_lenght(int i)
+{
+	std::string	str_int;
+	char	c;
+
+	c = i + '0';
+	str_int = c;
+	put_the_right_lenght(str_int);
 }

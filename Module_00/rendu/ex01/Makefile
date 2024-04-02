@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 22:08:32 by yzaoui            #+#    #+#              #
-#    Updated: 2024/03/30 12:37:40 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/01 19:34:57 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 ############### OBJ de Module 00 exo 01
 
-EX01_FILES =	main.cpp utils.cpp Contact.cpp
+EX01_FILES =	main.cpp utils.cpp Contact.cpp PhoneBook.cpp
 OBJ_PATH  = obj/
 PROG_OBJ = ${addprefix ${OBJ_PATH}, ${EX01_FILES:.cpp=.o}}
 

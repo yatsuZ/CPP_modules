@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:03:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/01 03:16:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/02 02:04:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 Contact::Contact(void)
 {
-	this->_first_name = "";
-	this->_last_name = "";
-	this->_nickname = "";
-	this->_phone_number = "";
-	this->_dark_secret = "";
+	this->_first_name = "-";
+	this->_last_name = "-";
+	this->_nickname = "-";
+	this->_phone_number = "-";
+	this->_dark_secret = "-";
 }
 
 Contact::Contact(std::string fn, std::string ln, std::string nm, std::string pn, std::string ds): _first_name(fn), _last_name(ln), _nickname(nm), _phone_number(pn), _dark_secret(ds)
@@ -59,7 +59,7 @@ std::string	Contact::get_dark_secret(void) const
 
 // Les ft set
 
-void	Contact::set_first_name(void)
+void	Contact::_set_first_name(void)
 {
 	std::string	str;
 
@@ -72,7 +72,7 @@ void	Contact::set_first_name(void)
 	this->_first_name = str;
 }
 
-void	Contact::set_last_name(void)
+void	Contact::_set_last_name(void)
 {
 	std::string	str;
 
@@ -85,7 +85,7 @@ void	Contact::set_last_name(void)
 	this->_last_name = str;
 }
 
-void	Contact::set_nickname(void)
+void	Contact::_set_nickname(void)
 {
 	std::string	str;
 
@@ -98,7 +98,7 @@ void	Contact::set_nickname(void)
 	this->_nickname = str;
 }
 
-void	Contact::set_phone_number(void)
+void	Contact::_set_phone_number(void)
 {
 	std::string	str;
 
@@ -111,7 +111,7 @@ void	Contact::set_phone_number(void)
 	this->_phone_number = str;
 }
 
-void	Contact::set_dark_secret(void)
+void	Contact::_set_dark_secret(void)
 {
 	std::string	str;
 
@@ -124,7 +124,14 @@ void	Contact::set_dark_secret(void)
 	this->_dark_secret = str;
 }
 
-// debug
+void	Contact::set_all()
+{
+	this->_set_first_name();
+	this->_set_last_name();
+	this->_set_nickname();
+	this->_set_phone_number();
+	this->_set_dark_secret();
+}
 
 void	Contact::show_class(void) const
 {
@@ -138,4 +145,11 @@ void	Contact::show_class(void) const
 	std::cout << "NickName\t= " << this->get_nickname() << std::endl;
 	std::cout << "PhoneNumber\t= " << this->get_phone_number() << std::endl;
 	std::cout << "DarkSecret\t= " << this->get_dark_secret() << no_color << std::endl;
+}
+
+void	Contact::show_names(void) const
+{
+	put_the_right_lenght(this->get_first_name());
+	put_the_right_lenght(this->get_last_name());
+	put_the_right_lenght(this->get_nickname());
 }

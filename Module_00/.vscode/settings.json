@@ -43,13 +43,8 @@
 		"ostream": "cpp",
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
-		"typeinfo": "cpp",
-		"optional": "cpp",
-		"ranges": "cpp",
-		"span": "cpp",
-		"ctime": "cpp",
-		"iomanip": "cpp",
-		"sstream": "cpp",
-		"cinttypes": "cpp"
-	}
+		"cinttypes": "cpp",
+		"typeinfo": "cpp"
+	},
+	"C_Cpp.errorSquiggles": "disabled"
 }
