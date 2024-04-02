@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 19:34:46 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/02 02:00:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/02 17:45:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ void	PhoneBook::_search()
 		this->_repertoir[j].show_names();
 		std::cout << std::endl << no_color;
 	}
-	while (!(input[0] >= '0' && input[0] <= '7'))
-		input = get_input("Choose a INDEX: ");
+	input = get_input("Choose a INDEX: ");
+	while (!(input[0] >= '0' && input[0] <= '7') || input.length() != 1)
+		input = get_input("RETRY, Choose a INDEX: ");
 	i = input[0] - '0';
 	this->_repertoir[i].show_class();
 }
