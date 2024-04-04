@@ -11,8 +11,7 @@ Le module 01 du C++ est composé de 7 exercices. le dernier exercice est faculta
 | nom de l'exercice    |      BraiiiiiiinnnzzzZ          |
 |----------------------|---------------------------------|
 | Dossier de rendu     | [ex00/](./rendu/ex00/)  |
-| Fichier à rendre     | Makefile, main.cpp, Zombie.{h, hpp}, Zombie.cpp,
-newZombie.cpp, randomChump.cpp |
+| Fichier à rendre     | Makefile, main.cpp, Zombie.{h, hpp}, Zombie.cpp, newZombie.cpp, randomChump.cpp |
 | Fonctions interdites | Aucune                  |
 
 Pour commencer, implémentez une classe Zombie.
