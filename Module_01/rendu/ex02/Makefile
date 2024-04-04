@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/03 18:42:33 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/03 18:43:49 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/04 15:46:22 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,8 @@
 
 ############### OBJ de Module 01 exo 02
 
-EX02_FILES =	main.cpp		\
-				Weapon.cpp		\
-				HumanA.cpp		\
-				HumanB.cpp
+EX02_FILES =	main.cpp
+
 OBJ_PATH = obj/
 
 PROG_OBJ = ${addprefix ${OBJ_PATH}, ${EX02_FILES:.cpp=.o}}

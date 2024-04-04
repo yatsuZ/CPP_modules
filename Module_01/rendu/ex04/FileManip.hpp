@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   FileManip.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 16:15:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/04 15:40:47 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/04/04 18:49:07 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/04/04 19:53:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef FILEMANIP_HPP
+# define FILEMANIP_HPP
 
-#include <iostream>
-#include <ostream>
 #include <string>
+#include <iostream>
+#include <fstream>
 
-class Zombie
+class FileManip
 {
 private:
-	std::string	_name;
+	bool		_goodInit;
+	std::string	_fileName;
+	std::string	_s1;
+	std::string	_s2;
 public:
-	Zombie(std::string name);
-	void	setName(std::string name);
-	Zombie();
-	~Zombie();
-	void	announce(void) const;
+	FileManip(int argc, char **argv);
+	~FileManip();
+	void	creatReplace(void) const;
+	void	showFileManip(void) const;
 };
-
-Zombie*	zombieHorde(int N, std::string name);
-void	delete_zombieHorde(Zombie *hordeZombie);
 
 #endif
