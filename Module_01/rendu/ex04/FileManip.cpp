@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:54:50 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/04 19:57:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/05 02:57:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	FileManip::showFileManip(void) const
 	std::cout << yellow << "this->_s2 = " << no_color << this->_s2 << std::endl;
 }
 
-void	FileManip::creatReplace(void) const
+void	FileManip::creatReplace(void)
 {
 	if (this->_goodInit == false)
 		return ;
 	
-	std::string		tmp;
-	std::ifstream	inf(this->_fileName.c_str());
+	std::string				line;
+	std::ifstream			inf(this->_fileName.c_str());
 	if (inf.fail())
 	{
 		std::cout << "Fail for std::ifstream inf("<< this->_fileName << ")" << std::endl;
@@ -62,13 +62,40 @@ void	FileManip::creatReplace(void) const
 		inf.close();
 		return ;
 	}
-	while (inf >> tmp)
+	while (std::getline(inf, line))
 	{
-		if (tmp == this->_s1)
-			outf << this->_s2;
-		else
-			outf << tmp;
+		this->_replaceS1ByS2(line, outf);
+		outf << std::endl;
 	}
 	outf.close();
 	inf.close();
+}
+
+
+// Compare tout les s1 caratere et le remplace par s2
+void	FileManip::_replaceS1ByS2(std::string line, std::ofstream &outf)
+{
+	std::string	buff;
+	size_t		size = this->_s1.length();
+
+	if (line.length() < size || size <= 0)
+	{
+		outf << line;
+		return ;
+	}
+	for (size_t debut = 0; debut <= line.length(); debut = debut + size)
+	{
+		if (debut + size >= line.length())
+		{
+			outf << line.substr(debut);
+			return ;
+		}
+		else
+		{
+			buff = line.substr(debut, size);
+			if (buff == this->_s1)
+				buff = this->_s2;
+			outf << buff;
+		}
+	}
 }
