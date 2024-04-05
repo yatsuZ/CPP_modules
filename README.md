@@ -28,5 +28,6 @@ En somme, le passage du C au C++ permet aux développeurs d'accéder à un ensem
 | me re documenter sur le C++ | OUI, je me suis arreter aux D04, regarder [labo](./laboratoire/) |
 | Re apprendre les makefile | OUI |
 | FINIR le module 00 | OUI |
-| FINIR le module 01 | NON |
+| FINIR le module 01 | OUI |
+| FINIR le module 02 | NON |
 

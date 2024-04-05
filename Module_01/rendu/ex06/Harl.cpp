@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 03:04:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/05 14:59:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/05 14:43:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,33 @@ void Harl::_error() {
 
 void	Harl::complain(std::string level)
 {
-	static void (Harl::*tabFt[4]) (void) = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
+	int	choice = -1;
 	const static std::string	tabStr[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4 && choice == -1; i++)
 	{
 		if (level == tabStr[i])
-			return ((this->*tabFt[i])());
+			choice = i;
 	}
-	std::cout << "I don't know \"" << level << "\"...." << std::endl;
+	switch (choice)
+	{
+	case -1:
+		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+		return;
+	case 0:
+		this->_litelFt(tabStr[choice++], &Harl::_debug);
+	case 1:
+		this->_litelFt(tabStr[choice++], &Harl::_info);
+	case 2:
+		this->_litelFt(tabStr[choice++], &Harl::_warning);
+	case 3:
+		this->_litelFt(tabStr[choice++], &Harl::_error);
+	}
 }
 
+void	Harl::_litelFt(std::string level, void (Harl::*ft) (void))
+{
+	std::cout << "[ "<< level <<" ]" << std::endl;
+	(this->*ft)();
+	std::cout << std::endl;
+}

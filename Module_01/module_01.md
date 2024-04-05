@@ -204,7 +204,7 @@ Le but de l’exercice est de vous faire utiliser des pointeurs sur fonctions me
 
 Ce n’est pas qu’une suggestion. 
 
-**Harl doit pouvoir se plaindre sans avoir recours à une forêt de if/else if/else.**
+**Harl doit pouvoir se plaindre sans avoir recours à une forêt de if/else.**
 Il n’y réfléchit pas à deux fois !
 
 Créer et rendre des tests pour montrer que Harl se plaint beaucoup. Vous pouvez utiliser les exemples de commentaires indiqué au dessus dans le sujet ou choisir d’utiliser des commentaires de votre choix.
@@ -230,7 +230,7 @@ Exemple :
 $> ./HarlFilter "WARNING"
 [ WARNING ]
 I think I deserve to have some extra bacon for free.
-I've been coming for years whereas you started working here since last month.
+I ve been coming for years whereas you started working here since last month.
 [ ERROR ]
 This is unacceptable, I want to speak to the manager now.
 $> ./HarlFilter "I am not sure how tired I am today..."

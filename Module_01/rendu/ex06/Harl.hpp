@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fstream1.cpp                                       :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 20:29:52 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/04 19:23:35 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/04/05 03:04:13 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/04/05 14:40:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HARL_HPP
+# define HARL_HPP
+
 #include <iostream>
-#include <fstream>
+#include <string>
 
-int	main(){
-	std::ifstream	ifs("numbers");
-	unsigned int	dst;
-	unsigned int	dst2;
-	ifs >> dst >> dst2;
+class Harl
+{
+private:
+	void	_debug(void);
+	void	_info(void);
+	void	_warning(void);
+	void	_error(void);
+	void	_litelFt(std::string level, void (Harl::*ft) (void));
+public:
+	void	complain(std::string level);
+	Harl();
+	~Harl();
+};
 
-	if (ifs.fail())
-		std::cout << "ERROR" << std::endl;
-	else
-		std::cout << dst << " " << dst2 << std::endl;
-	ifs.close();
-
-	//------------------
-
-	std::ofstream	ofs("test.out");
-
-	ofs << "i like ponies a whole damn lot" << std::endl;
-	ofs.close();
-
-	return (0);
-}
+#endif

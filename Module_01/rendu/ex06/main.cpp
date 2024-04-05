@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fstream1.cpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 20:29:52 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/04 19:23:35 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/04/05 03:03:50 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/04/05 15:00:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream>
+#include "./Harl.hpp"
 
-int	main(){
-	std::ifstream	ifs("numbers");
-	unsigned int	dst;
-	unsigned int	dst2;
-	ifs >> dst >> dst2;
+// bob.complain("wcpncvc");
+// bob.complain("DEBUG");
+// bob.complain("INFO");
+// bob.complain("WARNING");
+// bob.complain("ERROR");
 
-	if (ifs.fail())
-		std::cout << "ERROR" << std::endl;
-	else
-		std::cout << dst << " " << dst2 << std::endl;
-	ifs.close();
+int	main(int argc, char **argv)
+{
+	Harl bob;
 
-	//------------------
-
-	std::ofstream	ofs("test.out");
-
-	ofs << "i like ponies a whole damn lot" << std::endl;
-	ofs.close();
-
-	return (0);
+	if (argc >= 2)
+	{
+		std::string	msg(argv[1]);
+		bob.complain(msg);
+	}
 }
