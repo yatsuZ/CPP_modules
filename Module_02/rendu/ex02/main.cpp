@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 02:04:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 13:27:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void afficherEnBinaire(Fixed nombre) {
 
 int	main( void ) {
 	Fixed		a;
-	Fixed const	b(2147483647);
+	Fixed const	b( Fixed( 5.05f ) * Fixed( 2 ) );
 
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
-	std::cout << a + 1 << std::endl;
+	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;

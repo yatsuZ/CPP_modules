@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:28:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 01:59:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 13:34:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,24 +158,28 @@ bool	Fixed::operator!=(Fixed const & rf) const
 
 ////// BONUS
 
-void	Fixed::operator+=(Fixed const & rf)
+Fixed	&Fixed::operator+=(Fixed const & rf)
 {
 	*this = *this + rf;
+	return (*this);
 }
 
-void	Fixed::operator-=(Fixed const & rf)
+Fixed	&Fixed::operator-=(Fixed const & rf)
 {
 	*this = *this - rf;
+	return (*this);
 }
 
-void	Fixed::operator*=(Fixed const & rf)
+Fixed	&Fixed::operator*=(Fixed const & rf)
 {
 	*this = *this * rf;
+	return (*this);
 }
 
-void	Fixed::operator/=(Fixed const & rf)
+Fixed	&Fixed::operator/=(Fixed const & rf)
 {
 	*this = *this / rf;
+	return (*this);
 }
 
 Fixed	Fixed::operator-(void)

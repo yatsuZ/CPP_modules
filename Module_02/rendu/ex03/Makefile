@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 15:27:25 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/07 02:23:09 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/07 13:56:36 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@
 
 EX03_FILES =	main.cpp	\
 				Fixed.cpp	\
-				Point.cpp
+				Point.cpp	\
+				bsp.cpp
 
 OBJ_PATH = obj/
 

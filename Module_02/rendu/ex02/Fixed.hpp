@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:27:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 02:01:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 13:24:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ public:
 	Fixed	&operator=(Fixed const & rf);
 // BONUS
 
-	void	operator+=(Fixed const & rf);
-	void	operator-=(Fixed const & rf);
-	void	operator*=(Fixed const & rf);
-	void	operator/=(Fixed const & rf);
+	Fixed	&operator+=(Fixed const & rf);
+	Fixed	&operator-=(Fixed const & rf);
+	Fixed	&operator*=(Fixed const & rf);
+	Fixed	&operator/=(Fixed const & rf);
 
 // operrateur mathematic
 	Fixed	operator+(Fixed const & rf);
