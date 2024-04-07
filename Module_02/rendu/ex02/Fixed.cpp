@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:28:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 13:34:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 18:42:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ float	ft_pow(float base, int pow)
 	}
 	else
 	{
-		for (;pow != 0; pow--)
+		for (;pow > 0; pow--)
 			res = res * base;
 	}
 	return (res);
@@ -43,7 +43,7 @@ Fixed::Fixed(const int nbr)
 
 Fixed::Fixed(const float nbr)
 {
-	this->_rawBits = nbr * ft_pow(2, this->_coma);
+	this->_rawBits = (int)roundf(nbr * ft_pow(2, this->_coma));
 }
 
 
@@ -77,7 +77,7 @@ float	Fixed::toFloat(void) const
 {
 	float	res;
 
-	res = this->_rawBits * ft_pow(2, (-1 * this->_coma));
+	res = (float)this->_rawBits / (float)ft_pow(2, this->_coma);
 	return (res);
 }
 
@@ -111,7 +111,14 @@ Fixed	Fixed::operator-(Fixed const & rf)
 
 Fixed	Fixed::operator*(Fixed const & rf)
 {
-	return (Fixed(this->toFloat() * rf.toFloat()));
+	float	x = this->toFloat();
+	float	y = rf.toFloat();
+	float	res = x * y;
+	std::cout << "res = " << res << std::endl;
+	std::cout << "x = " << x << std::endl;
+	std::cout << "y = " << y << std::endl;
+
+	return (Fixed(res));
 }
 
 Fixed	Fixed::operator/(Fixed const & rf)

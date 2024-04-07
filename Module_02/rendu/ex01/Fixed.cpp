@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:28:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 00:56:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 19:53:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,72 +31,52 @@ float	ft_pow(float base, int pow)
 	return (res);
 }
 
+// |--- Constructeur ---|
+
 Fixed::Fixed()
 {
-	std::string cyan = "\033[36m";
-	std::string no_color = "\033[0m";
-
 	this->_rawBits = 0;
-	std::cout << cyan << "Default constructor called" << no_color << std::endl;
+	std::cout << BLUE << "Default constructor called" << NOCOLOR << std::endl;
 }
 
 Fixed::Fixed(const int nbr)
 {
-	std::string	yellow = "\033[33m";
-	std::string	no_color = "\033[0m";
-
+	if (nbr > 8388607 || nbr < -8388608)
+		std::cout << RED << "<! RISQUE d'overflow en cas de conversion Float !> " << NOCOLOR;
 	this->_rawBits = nbr << this->_coma;
-	std::cout << yellow << "Int constructor called" << no_color << std::endl;
+	std::cout << MAGENTA << "Int constructor called" << NOCOLOR << std::endl;
 }
 
 Fixed::Fixed(const float nbr)
 {
-	std::string no_color = "\033[0m";
-	std::string magenta = "\033[35m";
-	this->_rawBits = nbr * ft_pow(2, this->_coma);
-	std::cout << magenta << "Float constructor called" << no_color << std::endl;
+	this->_rawBits = (int)roundf(nbr * ft_pow(2, this->_coma));
+	std::cout << MAGENTA << "Float constructor called" << NOCOLOR << std::endl;
 }
-
 
 Fixed::Fixed(Fixed const & src)
 {
-	std::string no_color = "\033[0m";
-	std::string green = "\033[32m";
-	
-	std::cout << green << "Copy constructor called" << no_color << std::endl;
+	std::cout << YELLOW << "Copy constructor called" << NOCOLOR << std::endl;
 	*this = src;
 }
 
+// |--- Destructeur ----|
+
+Fixed::~Fixed()
+{
+	std::cout << RED << "Destructor called" << NOCOLOR << std::endl;
+}
+
+// |--- Opperateur d'assignation ---|
+
 Fixed	&Fixed::operator=(Fixed const &rf)
 {
-	std::string no_color = "\033[0m";
-	std::string green = "\033[32m";
-
-	std::cout << green << "Copy assignment operator called" << no_color << std::endl;
+	std::cout << YELLOW << "Copy assignment operator called" << NOCOLOR << std::endl;
 	if (this != &rf)
 		this->_rawBits = rf.getRawBits();
 	return (*this);
 }
 
-Fixed::~Fixed()
-{
-	std::string no_color = "\033[0m";
-	std::string red = "\033[31m";
-
-	std::cout << red << "Destructor called" << no_color << std::endl;
-}
-
-int		Fixed::getRawBits(void) const
-{
-	std::cout << "getRawBits member function called" << std::endl;
-	return (this->_rawBits);
-}
-
-void	Fixed::setRawBits(int const raw)
-{
-	std::cout << "Setteur function called" << std::endl;
-	this->_rawBits = raw;
-}
+// |--- Conversion ---|
 
 float	Fixed::toFloat(void) const
 {
@@ -114,6 +94,21 @@ int	Fixed::toInt(void) const
 	return (res);
 
 }
+
+// |--- Autre ---|
+
+int		Fixed::getRawBits(void) const
+{
+	std::cout << "getRawBits member function called" << std::endl;
+	return (this->_rawBits);
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	std::cout << "Setteur function called" << std::endl;
+	this->_rawBits = raw;
+}
+
 
 std::ostream	&operator<<( std::ostream & o, Fixed const & rf)
 {

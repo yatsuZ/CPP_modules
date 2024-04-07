@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 02:33:08 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 14:57:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 15:15:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	draw(int newDimension, Point index, Point newA, Point newB, Point newC, Poi
 	int	x = index.getX().toInt();
 	int	y = index.getY().toInt();
 
+	if (x == 0)
+		std::cout << y;
+	else if (y == newDimension - 1)
+		std::cout << x;
 	if (y == newDimension && x == 0)
 		std::cout << " ";
-	else if (x == newDimension)
-		std::cout << y - 1;
-	else if (y == 0)
-		std::cout << newDimension - x - 1;
 	// else if (index.close(newP))
 	// 	std::cout << "P";
 	// else if (index.close(newA) || index.close(newB) || index.close(newC))
@@ -56,10 +56,10 @@ void	showBsp( Point const a, Point const b, Point const c, Point const point)
 	(void) point;
 	Point index;
 
-	for (int y = newDimension; y >= 0; y--)
+	for (int y = newDimension - 1; y >= 0; y--)
 	{
 		index.setY(y);
-		for (int x = 0; x <= newDimension; x++)
+		for (int x = 0; x < newDimension; x++)
 		{
 			index.setX(x);
 			// index.show();

@@ -6,12 +6,15 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 02:20:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 19:54:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Fixed.hpp"
-#include <limits>
+
+
+// UTILE DEBEUG
+
 void afficherEnBinaire(int nombre) 
 {
 	int tailleEnBits = sizeof(int) * 8;
@@ -28,42 +31,72 @@ void afficherEnBinaire(Fixed nombre)
 	afficherEnBinaire(nombre.getRawBits());
 }
 
+int binaryStringToInt(const std::string& binaryString) {
+	int result = 0;
+	int exponent = binaryString.size() - 1;
+
+	for (size_t i = 0; i < binaryString.size(); ++i) {
+		if (binaryString[i] == '1') {
+			if (exponent > 30 && (result > (std::numeric_limits<int>::max() >> 1))) {
+				std::cerr << "Débordement positif détecté !" << std::endl;
+				return std::numeric_limits<int>::max();
+			}
+			if (exponent > 30 && (result < (std::numeric_limits<int>::min() >> 1))) {
+				std::cerr << "Débordement négatif détecté !" << std::endl;
+				return std::numeric_limits<int>::min();
+			}
+			result += 1 << exponent;
+		}
+		exponent--;
+	}
+	return result;
+}
+
+////////////////////////
+
 int	main( void ) {
 	Fixed	a;
 	Fixed const b(__FLT_MAX__);
-	Fixed const c(-42.42f);
-	Fixed const d( b );
+	Fixed const c(-8388609);
+	Fixed const d(8388608);
+	Fixed const e( 5.05f );
 
 	a = Fixed( 1234.4321f );
 
-	std::cout << "a is\t" << a << std::endl;
-	std::cout << "b is\t" << b << std::endl;
-	std::cout << "c is\t" << c << std::endl;
-	std::cout << "d is\t" << d << std::endl;
+	std::cout << "a is " << CYAN << a << NOCOLOR << std::endl;
+	std::cout << "b is " << CYAN << b << NOCOLOR << std::endl;
+	std::cout << "c is " << CYAN << c << NOCOLOR << std::endl;
+	std::cout << "d is " << CYAN << d << NOCOLOR << std::endl;
+	std::cout << "e is " << CYAN << e << NOCOLOR << std::endl;
 
 	std::cout << "|-----------------------------------------|" << std::endl;
 
-	std::cout << "a is " << a.toInt() << "\tas integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " \tas integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " \tas integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " \tas integer" << std::endl;
+	std::cout << "a is " << CYAN << a.toInt() << NOCOLOR << " as integer" << std::endl;
+	std::cout << "b is " << CYAN << b.toInt() << NOCOLOR << " as integer" << std::endl;
+	std::cout << "c is " << CYAN << c.toInt() << NOCOLOR << " as integer" << std::endl;
+	std::cout << "d is " << CYAN << d.toInt() << NOCOLOR << " as integer" << std::endl;
+	std::cout << "e is " << CYAN << e.toInt() << NOCOLOR << " as integer" << std::endl;
 
 	std::cout << "|-----------------------------------------|" << std::endl;
 
 
-	std::cout << "a is " << a.toFloat() << "\tas floater" << std::endl;
-	std::cout << "b is " << b.toFloat() << " \t\tas floater" << std::endl;
-	std::cout << "c is " << c.toFloat() << "\t\tas floater" << std::endl;
-	std::cout << "d is " << d.toFloat() << " \t\tas floater" << std::endl;
+	std::cout << "a is " << CYAN << a.toFloat() << NOCOLOR << " as floater" << std::endl;
+	std::cout << "b is " << CYAN << b.toFloat() << NOCOLOR << " as floater" << std::endl;
+	std::cout << "c is " << CYAN << c.toFloat() << NOCOLOR << " as floater" << std::endl;
+	std::cout << "d is " << CYAN << d.toFloat() << NOCOLOR << " as floater" << std::endl;
+	std::cout << "e is " << CYAN << e.toFloat() << NOCOLOR << " as integer" << std::endl;
 
 	std::cout << "|-----------------------------------------|" << std::endl;
+	std::cout << (int)__FLT_MIN__ << " as integer" << std::endl;
 
-	afficherEnBinaire(c);
-	afficherEnBinaire(c.toInt());
-	afficherEnBinaire(c);
-	afficherEnBinaire(c.toFloat());
-	afficherEnBinaire(c);
-	afficherEnBinaire(-2147483647);
-
+	// afficherEnBinaire(c);
+	// afficherEnBinaire(c.toInt());
+	// afficherEnBinaire(c);
+	// afficherEnBinaire(c.toFloat());
+	// afficherEnBinaire(c);
+	// std::cout << std::endl << binaryStringToInt("0000000011111111111111111111111")<< std::endl;
+	// std::cout << std::endl << binaryStringToInt("11111111100000000000000000000000")<< std::endl;
+	// std::cout << std::endl << binaryStringToInt("11111111110000000000000000000000")<< std::endl;
 	return 0;
 }
+

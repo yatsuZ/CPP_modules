@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 02:23:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 14:51:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 15:12:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ void	Point::setY(Fixed newY)
 void	Point::show(void) const
 {
 	std::cout << "this->_x = " << this->_x;
-	std::cout << " | this->_y = " << this->_y << std::endl;
+	std::cout << "\t| this->_y = " << this->_y << std::endl;
 }
