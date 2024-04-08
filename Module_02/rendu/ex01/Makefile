@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 15:27:25 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/05 16:16:01 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/08 02:29:19 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = Replace.out
+PROGRAM_NAME = Fixed01.out
 
 ############### COMMANDE OBLIGATOIRE
 

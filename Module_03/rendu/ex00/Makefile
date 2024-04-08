@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/05 15:27:25 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/08 02:29:36 by yzaoui           ###   ########.fr        #
+#    Created: 2024/04/08 02:24:53 by yzaoui            #+#    #+#              #
+#    Updated: 2024/04/08 02:29:45 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,7 @@
 ############### OBJ de Module 02 exo 03
 
 EX03_FILES =	main.cpp	\
-				Fixed.cpp	\
-				Point.cpp	\
-				bsp.cpp
+				ClapTrap.cpp
 
 OBJ_PATH = obj/
 
@@ -29,7 +27,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = bsp.out
+PROGRAM_NAME = ClapTrap.out
 
 ############### COMMANDE OBLIGATOIRE
 
