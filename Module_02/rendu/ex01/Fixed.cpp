@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:28:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 19:53:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 21:12:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Fixed::Fixed()
 Fixed::Fixed(const int nbr)
 {
 	if (nbr > 8388607 || nbr < -8388608)
-		std::cout << RED << "<! RISQUE d'overflow en cas de conversion Float !> " << NOCOLOR;
+		std::cout << RED << "<! RISQUE d'overflow en cas de conversion Float \"" << nbr << "\" !> " << NOCOLOR;
 	this->_rawBits = nbr << this->_coma;
 	std::cout << MAGENTA << "Int constructor called" << NOCOLOR << std::endl;
 }

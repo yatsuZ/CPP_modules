@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 19:54:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 21:15:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int binaryStringToInt(const std::string& binaryString) {
 int	main( void ) {
 	Fixed	a;
 	Fixed const b(__FLT_MAX__);
-	Fixed const c(-8388609);
-	Fixed const d(8388608);
+	Fixed const c(-8388608);
+	Fixed const d(8388607);
 	Fixed const e( 5.05f );
 
-	a = Fixed( 1234.4321f );
+	a = Fixed( 42.42f );
 
 	std::cout << "a is " << CYAN << a << NOCOLOR << std::endl;
 	std::cout << "b is " << CYAN << b << NOCOLOR << std::endl;
@@ -87,7 +87,6 @@ int	main( void ) {
 	std::cout << "e is " << CYAN << e.toFloat() << NOCOLOR << " as integer" << std::endl;
 
 	std::cout << "|-----------------------------------------|" << std::endl;
-	std::cout << (int)__FLT_MIN__ << " as integer" << std::endl;
 
 	// afficherEnBinaire(c);
 	// afficherEnBinaire(c.toInt());

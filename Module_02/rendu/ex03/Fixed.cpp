@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:28:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 01:59:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 21:42:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,37 +31,36 @@ float	ft_pow(float base, int pow)
 	return (res);
 }
 
-Fixed::Fixed()
+// |--- Constructeur ---|
+
+Fixed::Fixed(): _rawBits(0)
 {
-	this->_rawBits = 0;
 }
 
 Fixed::Fixed(const int nbr)
 {
+	if (nbr > 8388607 || nbr < -8388608)
+		std::cout << RED << "<! RISQUE d'overflow en cas de conversion Float \"" << nbr << "\" !> " << NOCOLOR;
 	this->_rawBits = nbr << this->_coma;
 }
 
 Fixed::Fixed(const float nbr)
 {
-	this->_rawBits = nbr * ft_pow(2, this->_coma);
+	this->_rawBits = (int)roundf(nbr * ft_pow(2, this->_coma));
 }
-
 
 Fixed::Fixed(Fixed const & src)
 {
 	*this = src;
 }
 
-Fixed	&Fixed::operator=(Fixed const &rf)
-{
-	if (this != &rf)
-		this->_rawBits = rf.getRawBits();
-	return (*this);
-}
+// |--- Destructeur ----|
 
 Fixed::~Fixed()
 {
 }
+
+// |--- Setteur et geteur
 
 int		Fixed::getRawBits(void) const
 {
@@ -73,11 +72,13 @@ void	Fixed::setRawBits(int const raw)
 	this->_rawBits = raw;
 }
 
+// |--- Conversion ----|
+
 float	Fixed::toFloat(void) const
 {
 	float	res;
 
-	res = this->_rawBits * ft_pow(2, (-1 * this->_coma));
+	res = (float)this->_rawBits / (float)ft_pow(2, this->_coma);
 	return (res);
 }
 
@@ -89,43 +90,25 @@ int	Fixed::toInt(void) const
 	return (res);
 }
 
+//////////////// |--- Opperateur ---|
+
 std::ostream	&operator<<( std::ostream & o, Fixed const & rf)
 {
 	o << rf.toFloat();
 	return o;
 }
 
+//////////////// |--- Assignation
 
-//
-
-// assignation
-Fixed	Fixed::operator+(Fixed const & rf)
+Fixed	&Fixed::operator=(Fixed const &rf)
 {
-	return (Fixed(this->toFloat() + rf.toFloat()));
+	if (this != &rf)
+		this->_rawBits = rf.getRawBits();
+	return (*this);
 }
 
-Fixed	Fixed::operator-(Fixed const & rf)
-{
-	return (Fixed(this->toFloat() - rf.toFloat()));
-}
+//////////////// |--- Comparaison logique
 
-Fixed	Fixed::operator*(Fixed const & rf)
-{
-	return (Fixed(this->toFloat() * rf.toFloat()));
-}
-
-Fixed	Fixed::operator/(Fixed const & rf)
-{
-	if (rf.getRawBits() == 0)
-	{
-		std::cout << "Error can't divide by 0!" << std::endl;
-		return (Fixed(0));
-	}
-	return (Fixed(this->toFloat() / rf.toFloat()));
-}
-
-
-// Comparaison logique
 bool	Fixed::operator>(Fixed const & rf) const
 {
 	return (this->getRawBits() > rf.getRawBits());
@@ -156,34 +139,35 @@ bool	Fixed::operator!=(Fixed const & rf) const
 	return (this->getRawBits() != rf.getRawBits());
 }
 
-////// BONUS
+//////////////// |--- Operrateur Arithematic
 
-void	Fixed::operator+=(Fixed const & rf)
+Fixed	Fixed::operator+(Fixed const & rf)
 {
-	*this = *this + rf;
+	return (Fixed(this->toFloat() + rf.toFloat()));
 }
 
-void	Fixed::operator-=(Fixed const & rf)
+Fixed	Fixed::operator-(Fixed const & rf)
 {
-	*this = *this - rf;
+	return (Fixed(this->toFloat() - rf.toFloat()));
 }
 
-void	Fixed::operator*=(Fixed const & rf)
+Fixed	Fixed::operator*(Fixed const & rf)
 {
-	*this = *this * rf;
+	return (Fixed(rf.toFloat() * this->toFloat()));
 }
 
-void	Fixed::operator/=(Fixed const & rf)
+Fixed	Fixed::operator/(Fixed const & rf)
 {
-	*this = *this / rf;
+	if (rf.getRawBits() == 0)
+	{
+		std::cout << "Error can't divide by 0!" << std::endl;
+		return (Fixed(0));
+	}
+	return (Fixed(this->toFloat() / rf.toFloat()));
 }
 
-Fixed	Fixed::operator-(void)
-{
-	return (*this * -1);
-}
+//////////////// |--- Accrementation / Deccrementation
 
-// Accrementation
 Fixed	Fixed::operator++(void)
 {
 	this->_rawBits++;
@@ -210,7 +194,38 @@ Fixed	Fixed::operator--(int)
 	return (temp);
 }
 
-// ft
+//////////////// |--- BONUS
+
+Fixed	&Fixed::operator+=(Fixed const & rf)
+{
+	*this = *this + rf;
+	return (*this);
+}
+
+Fixed	&Fixed::operator-=(Fixed const & rf)
+{
+	*this = *this - rf;
+	return (*this);
+}
+
+Fixed	&Fixed::operator*=(Fixed const & rf)
+{
+	*this = *this * rf;
+	return (*this);
+}
+
+Fixed	&Fixed::operator/=(Fixed const & rf)
+{
+	*this = *this / rf;
+	return (*this);
+}
+
+Fixed	Fixed::operator-(void)
+{
+	return (*this * -1);
+}
+
+// |--- Get min max const
 
 Fixed	Fixed::min(Fixed const & rf1, Fixed const & rf2)
 {

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 02:23:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 15:12:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/08 01:50:57 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ Point::~Point()
 }
 
 Point::Point(const float x, const float y): _x(x), _y(y)
+{
+}
+Point::Point(const Fixed x, const Fixed y): _x(x), _y(y)
 {
 }
 
@@ -64,10 +67,6 @@ bool	Point::operator==(Point const & rf)
 
 bool	Point::close(Point const & rf) const
 {
-	// std::cout << "this->_x.toInt() = " << this->_x.toInt() << std::endl;
-	// std::cout << "rf.getX().toInt() = " << rf.getX().toInt() << std::endl;
-	// std::cout << std::endl;
-
 	return (this->_x.toInt() == rf.getX().toInt() && this->_y.toInt() == rf.getY().toInt());
 }
 
@@ -95,4 +94,43 @@ void	Point::show(void) const
 {
 	std::cout << "this->_x = " << this->_x;
 	std::cout << "\t| this->_y = " << this->_y << std::endl;
+}
+
+// Produit scalaire permet 
+Fixed	Point::produitScalaire(const Point &rf) const
+{
+	Fixed	x = this->getX() * rf.getX();
+	Fixed	y = this->getY() * rf.getY();
+	std::cout << std::endl;
+	std::cout << this->getX() << " * " << rf.getX() << " = " << x << std::endl;
+	std::cout << this->getY() << " * " << rf.getY() << " = " << y << std::endl;
+	std::cout << std::endl;
+	return (x + y);
+}
+
+// Opérateur de soustraction pour obtenir le vecteur entre deux points
+// Les cordderne du 2iem point moin le premier
+Point	Point::operator-(const Point &rf) const
+{
+	Fixed	newX = rf.getX() - this->getX();
+	Fixed	newY = rf.getY() - this->getY();
+
+	return Point(newX, newY);
+}
+
+Fixed	Point::sign(Point const &p1, Point const &p2, Point const &p3)
+{
+	Fixed	p13X = (p1.getX() - p3.getX());
+	Fixed	p23Y = (p2.getY() - p3.getY());
+	Fixed	p23X = (p2.getX() - p3.getX());
+	Fixed	p13Y = (p1.getY() - p3.getY());
+
+	return ((p13X * p23Y) - (p23X * p13Y));
+}
+
+std::ostream & operator<<( std::ostream & o, Point const & rf)
+{
+	o << "(" << rf.getX() << ", " << rf.getY() << ")";
+	return o;
+
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:27:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 19:25:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 21:17:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Fixed
 private:
 	int					_rawBits;
 	static const int	_coma = 8;
+
 public:
 	// Constructeur
 	Fixed(void);

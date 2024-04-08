@@ -6,26 +6,23 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 14:33:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/08 02:12:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-void afficherEnBinaire(Fixed nombre) {
-	int tailleEnBits = sizeof(int) * 8;
-
-	for (int i = tailleEnBits - 1; i >= 0; --i) {
-		int bit = (nombre.getRawBits() >> i) & 1;
-		std::cout << bit;
-	}
-	std::cout << std::endl;
-}
-
-int	main( void )
+int	main(void)
 {
-	Point	a, b, c, p;
+	Point	a(3, 3), b(6, 2), c(1, 5), p(1, 5);
 
-	showBsp(a, b, c, p);
+	showBsp10x10(a, b, c, p);
+	if (bsp(a, b, c, p))
+		std::cout << BLUE << "Le point P est dans l'aire du triangle." << NOCOLOR << std::endl;
+	else
+		std::cout << MAGENTA << "Le point P N'est PAS dans l'aire du triangle." << NOCOLOR << std::endl;
 	return 0;
 }
+
+
+// NEtoyer le code
