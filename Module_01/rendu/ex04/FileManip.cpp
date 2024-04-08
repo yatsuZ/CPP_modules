@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:54:50 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/05 02:57:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 17:18:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,21 @@ void	FileManip::_replaceS1ByS2(std::string line, std::ofstream &outf)
 		outf << line;
 		return ;
 	}
-	for (size_t debut = 0; debut <= line.length(); debut = debut + size)
+	for (size_t debut = 0; debut <= line.length(); debut = debut + 1)
 	{
-		if (debut + size >= line.length())
+		if (debut + size > line.length())
 		{
 			outf << line.substr(debut);
 			return ;
 		}
 		else
 		{
-			buff = line.substr(debut, size);
-			if (buff == this->_s1)
+			buff = line.substr(debut, 1);
+			if (line.substr(debut, size) == this->_s1)
+			{
 				buff = this->_s2;
+				debut = debut + size - 1;
+			}
 			outf << buff;
 		}
 	}

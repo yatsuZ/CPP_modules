@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 14:20:20 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/05 14:20:43 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/07 17:27:52 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = Replace.out
+PROGRAM_NAME = HarlSwitch.out
 
 ############### COMMANDE OBLIGATOIRE
 

@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/03 16:14:36 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/03 18:42:16 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/08 12:50:52 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = Zombie_00.out
+PROGRAM_NAME = Zombie_01.out
 
 ############### COMMANDE OBLIGATOIRE
 

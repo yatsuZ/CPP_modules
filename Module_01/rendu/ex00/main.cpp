@@ -6,11 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:14:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/03 17:20:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/08 12:55:05 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
+#include "./Zombie/Zombie.hpp"
 
 int	main(void)
 {
@@ -34,3 +34,5 @@ int	main(void)
 	delete tmp;
 	delete z_pointeur2;
 }
+
+

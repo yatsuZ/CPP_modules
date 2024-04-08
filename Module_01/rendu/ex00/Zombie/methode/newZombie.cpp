@@ -6,11 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:16:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/03 16:58:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/08 12:54:40 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
+#include "./../Zombie.hpp"
 
 Zombie*	newZombie(std::string name)
 {

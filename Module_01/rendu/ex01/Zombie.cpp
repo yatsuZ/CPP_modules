@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:15:11 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/04 15:40:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 17:43:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ Zombie::Zombie()
 	std::cout << "WHAT THATS ?";
 	std::cout << std::endl;
 }
+
+
+
 Zombie::Zombie(std::string name): _name(name)
 {
 	std::string	no_color = "\033[0m";

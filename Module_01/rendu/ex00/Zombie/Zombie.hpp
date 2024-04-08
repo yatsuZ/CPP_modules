@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:15:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/03 17:31:32 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/07 18:21:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 #include <string>
 #include <iomanip>
 #include <sstream>
+
+#define NOCOLOR "\033[0m"
+#define YELLOW "\033[33m"
+#define MAGENTA "\033[35m"
+#define RED "\033[31m"
+
 
 class Zombie
 {
