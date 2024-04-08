@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 15:27:25 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/08 02:29:36 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/08 13:14:49 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@
 ############### OBJ de Module 02 exo 03
 
 EX03_FILES =	main.cpp	\
-				Fixed.cpp	\
-				Point.cpp	\
+				Fixed/Fixed.cpp	\
+				Point/Point.cpp	\
 				bsp.cpp
 
 OBJ_PATH = obj/
@@ -39,6 +39,7 @@ ${PROGRAM_NAME}: ${PROG_OBJ}
 	${CC} ${C_FLAGS} ${PROG_OBJ} -o ${PROGRAM_NAME}
 
 $(OBJ_PATH)%.o: %.cpp
+	mkdir -p $(@D)
 	$(CC) $(C_FLAGS) -c $< -o $@
 
 $(OBJ_PATH):

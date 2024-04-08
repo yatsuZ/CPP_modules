@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:27:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 21:31:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/08 19:30:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
+#include <string>
+#include <sstream>
+#include <stdio.h>
+#include <iomanip>
 
 #define NOCOLOR "\033[0m"
 #define RED "\033[31m"
