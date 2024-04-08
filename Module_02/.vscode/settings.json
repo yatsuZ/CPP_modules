@@ -47,6 +47,9 @@
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"typeinfo": "cpp",
-		"*.pdf": "cpp"
+		"*.pdf": "cpp",
+		"ctime": "cpp",
+		"iomanip": "cpp",
+		"sstream": "cpp"
 	}
 }

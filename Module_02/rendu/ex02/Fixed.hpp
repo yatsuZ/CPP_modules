@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:27:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/07 21:31:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/09 00:35:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #define CYAN "\033[36m"
 #define WHITE "\033[37m"
 #define PURPLE "\033[35m"
+#define PINK "\033[38;5;206m"
 
 class Fixed
 {
