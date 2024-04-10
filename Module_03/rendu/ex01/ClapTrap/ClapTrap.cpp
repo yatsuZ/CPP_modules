@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 02:25:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/10 02:37:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/10 02:37:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ClapTrap::ClapTrap(std::string name, int hp, int stamina, int damage, std::strin
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "* " << RED << this->_name << " was destroyed." << NOCOLOR << "* " << std::endl;
+	std::cout << "* " << RED << this->_name << " was TOTALLY destroyed." << NOCOLOR << "* " << std::endl;
 }
 
 // Copy
@@ -156,4 +156,9 @@ void	ClapTrap::setStamina(int newStamina)
 std::string	ClapTrap::getName(void)const
 {
 	return (this->_name);
+}
+
+int		ClapTrap::getDammage(void)const
+{
+	return (this->_damage);
 }

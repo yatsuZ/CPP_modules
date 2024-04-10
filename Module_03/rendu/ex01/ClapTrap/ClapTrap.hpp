@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 02:25:30 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/10 00:02:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/10 02:14:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 
 	std::string	_name;
 	int			_hp;
@@ -66,6 +66,8 @@ public:
 	void	showData(void) const;
 	void	setStamina(int newStamina);
 	std::string	getName(void)const;
+	int		getDammage(void)const;
+
 };
 
 #endif
