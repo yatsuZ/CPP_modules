@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 01:13:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/11 16:40:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/11 21:24:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ ScavTrap::ScavTrap(std::string name)
 
 	this->_name = name;
 	this->_hp = 100;
-	this->_stamina = 50;
 	this->_damage = 20;
 	this->_quote = "";
 	this->_guard = false;
+	this->_initSomeState();
 }
 
 ScavTrap::~ScavTrap()
@@ -93,4 +93,9 @@ void	ScavTrap::showData(void) const
 	std::cout << "damage = " << this->_damage << std::endl;
 	std::cout << "guard = " << (this->_guard?"TRUE":"FALSE") << std::endl;
 	std::cout << "--------------------------------" << std::endl;
+}
+
+void	ScavTrap::_initSomeState(void)
+{
+	this->_stamina = 50;
 }

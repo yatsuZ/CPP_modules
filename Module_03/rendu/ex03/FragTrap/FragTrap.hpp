@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 02:27:23 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/11 16:57:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/11 21:22:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 class FragTrap: virtual public ClapTrap
 {
-private:
-	void	_initAsFragTrap(void);
+protected:
+	void	_initSomeState(void);
 public:
 	FragTrap();
 	FragTrap(std::string name);

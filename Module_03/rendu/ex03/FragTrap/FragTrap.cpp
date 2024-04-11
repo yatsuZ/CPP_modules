@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 02:27:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/11 16:57:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/11 21:24:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,18 @@ FragTrap::FragTrap(void)
 	std::cout << "* " << GREEN << this->_name << " Evolue as FragTrap ." << NOCOLOR << "* " << std::endl;
 	
 	this->_name = "FragTrap";
-	this->_hp = 101;
 	this->_stamina = 100;
-	this->_damage = 30;
 	this->_quote = "";
+	this->_initSomeState();
 }
 FragTrap::FragTrap(std::string name)
 {
 	this->_name = name;
 	std::cout << "* " << GREEN << this->_name << " Evolue as FragTrap ." << NOCOLOR << "* " << std::endl;
 	
-	this->_hp = 101;
 	this->_stamina = 100;
-	this->_damage = 30;
 	this->_quote = "";
-
+	this->_initSomeState();
 }
 FragTrap	&FragTrap::operator=(FragTrap const &src)
 {
@@ -67,7 +64,8 @@ void FragTrap::highFivesGuys(void)
 	sleep(3);
 }
 
-void	FragTrap::_initAsFragTrap(void)
+void	FragTrap::_initSomeState(void)
 {
-	this->_hp = 
+	this->_hp = 100;
+	this->_damage = 30;
 }
