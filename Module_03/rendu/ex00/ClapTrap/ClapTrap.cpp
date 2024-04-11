@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 02:25:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/10 02:37:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/11 16:08:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,20 +120,6 @@ bool	ClapTrap::haveStamina(void) const
 }
 
 
-void	ClapTrap::attack(ClapTrap &target)
-{
-	this->attack(target._name);
-	if (!this->haveHP() || !this->haveStamina())
-		return ;
-	(this->_stamina == 0)? this->_stamina-- : this->_stamina;
-	if (this->_damage < 0)
-	{
-		target.beRepaired(abs(this->_damage));
-		target._stamina++;
-	}
-	else
-		target.takeDamage(this->_damage);
-}
 
 void	ClapTrap::showData(void) const
 {
@@ -156,4 +142,19 @@ void	ClapTrap::setStamina(int newStamina)
 std::string	ClapTrap::getName(void)const
 {
 	return (this->_name);
+}
+
+void	ClapTrap::attack(ClapTrap &target)
+{
+	this->attack(target._name);
+	if (!this->haveHP() || !this->haveStamina())
+		return ;
+	(this->_stamina == 0)? this->_stamina-- : this->_stamina;
+	if (this->_damage < 0)
+	{
+		target.beRepaired(abs(this->_damage));
+		target._stamina++;
+	}
+	else
+		target.takeDamage(this->_damage);
 }

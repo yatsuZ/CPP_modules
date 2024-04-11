@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 02:27:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/10 02:49:21 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/11 16:27:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 FragTrap::FragTrap(void)
 {
-	std::cout << "* " << GREEN << this->_name << " Evolue as FragTrap ." << NOCOLOR << "* " << std::endl;
+	this->_name = "FragTrap";
 	
-	this->_name = "ScavTrap";
+	std::cout << "* " << GREEN << this->_name << " Evolue as FragTrap ." << NOCOLOR << "* " << std::endl;
 	this->_hp = 100;
 	this->_stamina = 100;
 	this->_damage = 30;
@@ -24,9 +24,9 @@ FragTrap::FragTrap(void)
 }
 FragTrap::FragTrap(std::string name)
 {
-	std::cout << "* " << GREEN << this->_name << " Evolue as FragTrap ." << NOCOLOR << "* " << std::endl;
-	
 	this->_name = name;
+	
+	std::cout << "* " << GREEN << this->_name << " Evolue as FragTrap ." << NOCOLOR << "* " << std::endl;
 	this->_hp = 100;
 	this->_stamina = 100;
 	this->_damage = 30;
