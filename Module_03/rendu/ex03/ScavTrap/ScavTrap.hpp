@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 01:23:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/11 21:23:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/12 14:45:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 
 class ScavTrap : virtual public ClapTrap
 {
-private:
-	bool	_guard;
 protected:
+	bool	_guard;
 	void	_initSomeState(void);
 public:
 	ScavTrap();

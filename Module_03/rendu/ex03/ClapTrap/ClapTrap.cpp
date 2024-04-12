@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 02:25:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/11 16:39:57 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/12 15:16:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 ClapTrap::ClapTrap(): _name("ClapTrap"), _hp(10), _stamina(10), _damage(0), _quote("")
 {
-	std::cout << "* " << BLUE << this->_name << " ClapTrap was built." << NOCOLOR << "* " << std::endl;
+	std::cout << "* " << BLUE << this->_name << " ClapTrap was built ." << NOCOLOR << "* " << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
 : _name(name), _hp(10), _stamina(10), _damage(0), _quote("")
 {
-	std::cout << "* " << BLUE << this->_name << " ClapTrap was built." << NOCOLOR << "* "<< std::endl;
+	std::cout << "* " << BLUE << this->_name << " ClapTrap was built ." << NOCOLOR << "* "<< std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name, int hp, int stamina, int damage, std::string quote)
@@ -101,7 +101,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 void	ClapTrap::useQuote(void) const
 {
-	std::cout << YELLOW << "<"<< this->_name << ">: " << NOCOLOR << this->_quote << std::endl;
+	std::cout << this->_name << ": " << this->_quote << std::endl;
 }
 
 void	ClapTrap::setQuote(std::string newQuote)

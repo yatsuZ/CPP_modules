@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 16:10:57 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/11 21:25:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/12 15:17:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,29 @@ DiamondTrap	&DiamondTrap::operator=(DiamondTrap const &src)
 DiamondTrap::~DiamondTrap()
 {
 	std::cout << "* DiamondTrap " << RED << this->_name << " DEFUSION :(" << NOCOLOR << "* " << std::endl;
+}
+
+void DiamondTrap::whoAmI(void) const
+{
+	std::cout << "ClapTrap::name = " << this->ClapTrap::_name << std::endl;
+	std::cout << "name = " << this->_name << std::endl;
+}
+
+
+void	DiamondTrap::showData(void) const
+{
+	std::cout << "--------------------------------" << std::endl;
+	std::cout << "Adresse = " << this << std::endl;
+	this->whoAmI();
+	std::cout << "quote = \"" << this->_quote << "\"" << std::endl;
+	std::cout << "hp = " << this->_hp << std::endl;
+	std::cout << "stamina = " << this->_stamina << std::endl;
+	std::cout << "damage = " << this->_damage << std::endl;
+	std::cout << "guard = " << (this->_guard?"TRUE":"FALSE") << std::endl;
+	std::cout << "--------------------------------" << std::endl;
+}
+
+void DiamondTrap::attack(std::string const &target)
+{
+	this->ScavTrap::attack(target);
 }

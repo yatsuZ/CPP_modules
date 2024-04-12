@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 02:25:04 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/10 01:08:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/04/12 15:37:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	main(int argc, char **argv)
 		testSubject();
 	else
 	{
-		std::cout << "Faire le test manuellement" << std::endl;
+		std::cout << "Faire le test manuellement, ou metre en arguament \"stupid\"" << std::endl;
 	}
 	return (0);
 }
