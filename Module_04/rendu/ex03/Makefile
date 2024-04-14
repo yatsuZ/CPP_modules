@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 18:11:24 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/13 17:33:35 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/13 23:54:51 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,12 @@
 
 ############### OBJ de Module 02 exo 03
 
-EX03_FILES =	main.cpp					\
-				Animal/Animal.cpp			\
-				Cat/Cat.cpp					\
-				Dog/Dog.cpp					\
-				WrongAnimal/WrongAnimal.cpp	\
-				WrongCat/WrongCat.cpp
-
+EX03_FILES =	main.cpp	\
+				All_Character/Character/Character.cpp \
+				All_Materiaux/AMateria/AMateria.cpp \
+				All_Materiaux/MateriaSource/MateriaSource.cpp \
+				All_Materiaux/Materiaux/Cure.cpp \
+				All_Materiaux/Materiaux/Ice.cpp 
 OBJ_PATH = obj/
 
 PROG_OBJ = ${addprefix ${OBJ_PATH}, ${EX03_FILES:.cpp=.o}}
@@ -31,7 +30,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = Animal_00.out
+PROGRAM_NAME = Animal_02.out
 
 ############### COMMANDE OBLIGATOIRE
 

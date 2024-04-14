@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 18:11:24 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/13 17:33:35 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/04/13 18:11:27 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@
 
 EX03_FILES =	main.cpp					\
 				Animal/Animal.cpp			\
+				Brain/Brain.cpp					\
 				Cat/Cat.cpp					\
 				Dog/Dog.cpp					\
 				WrongAnimal/WrongAnimal.cpp	\
@@ -31,7 +32,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = Animal_00.out
+PROGRAM_NAME = Animal_01.out
 
 ############### COMMANDE OBLIGATOIRE
 
