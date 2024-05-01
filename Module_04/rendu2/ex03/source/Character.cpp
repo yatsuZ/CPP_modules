@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:59:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/04/30 17:01:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/01 13:12:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 0 && idx < 4)
+	if (idx >= 0 && idx < 4 && this->_inventaire[idx])
 		this->_inventaire[idx]->use(target);
 }
 
