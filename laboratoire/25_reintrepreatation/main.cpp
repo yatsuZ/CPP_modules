@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new2.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 02:59:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/05 20:10:30 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/05/06 00:29:45 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/05/06 00:48:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include <stdio.h>
 
-class Student
+int	main(void)
 {
-private:
-	std::string _login;
-public:
-	Student() : _login("ldefault")
-	{
-		std::cout << "Student " << this->_login << " is born" << std::endl;
-	}
-	~Student()
-	{
-		std::cout << "Student died" << std::endl;
-	}
-};
+	float		a = 420.042f;
 
-int	main()
-{
-	Student	*students = new Student[42];
-	
-	// FAIRE DES TRUCS
+	void *		b = &a;
+	void *		c = (void *) &a;
 
-	delete [] students;
-	return (0);
+	void *		d = &a;
+	// int *		e = d;
+	int *		f = (int *) d;
+
+	printf("%p, %f\n", &a, a);
+
+	printf("%p\n", b);
+	printf("%p\n", c);
+
+	printf("%p\n", d);
+	// printf("%p, %d\n", e, *e);
+	printf("%p, %d\n", f, *f);
 }

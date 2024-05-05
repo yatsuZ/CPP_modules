@@ -202,3 +202,13 @@ avec le mot clée virtuel rendre une fonction dynmaic == methode.
 ## Abstraction
 
 en gros de ce que j'ai compris c'est le faire davoir des methode pour pouvoir se faire heriter.
+
+## Nested Class
+
+ou classe imbriquer permet de declarer une classe dans une autre classe
+
+## Exceptions
+
+permet danticiper des erreur prevue. avec trhow catch et exception est une classe
+
+

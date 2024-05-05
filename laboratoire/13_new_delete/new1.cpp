@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 02:53:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/03/25 02:58:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/05 20:10:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ private:
 public:
 	Student(std::string login) : _login(login)
 	{
-		std::cout << "Student " << this->_login << "is born" << std::endl;
+		std::cout << "Student " << this->_login << " is born" << std::endl;
 	}
 	~Student()
 	{

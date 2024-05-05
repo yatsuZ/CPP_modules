@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new2.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 02:59:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/05 20:10:30 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/05/05 21:42:36 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/05/05 21:45:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-
-class Student
+class Cat
 {
-private:
-	std::string _login;
 public:
-	Student() : _login("ldefault")
+	class Leg
 	{
-		std::cout << "Student " << this->_login << " is born" << std::endl;
-	}
-	~Student()
-	{
-		std::cout << "Student died" << std::endl;
-	}
+		// Truc bidulle
+	};
 };
 
-int	main()
+class Dog
 {
-	Student	*students = new Student[42];
-	
-	// FAIRE DES TRUCS
+public:
+	class Leg
+	{
+		// Truc bidulle
+	};
+};
 
-	delete [] students;
+int	main(void)
+{
+	Cat		truc;
+	Cat::Leg	truc2;
 	return (0);
 }
