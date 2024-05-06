@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 00:29:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/06 00:36:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/06 22:48:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void dump_64bits_double(double b) {
 
 int	main(void)
 {
-	int		a = 42;
+	int		a = 42; /* Reference value */
 
-	double	b = a;
-	double	c = (double) a;
+	double	b = a; /* Implicite conversion cast */
+	double	c = (double) a; /* Explecite conversion cast */
 
 	double	d = 13.248f;
 	int		e = d;
