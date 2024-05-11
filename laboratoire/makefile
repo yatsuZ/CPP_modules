@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 00:08:18 by yzaoui            #+#    #+#              #
-#    Updated: 2024/05/06 00:55:34 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/05/10 13:05:20 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ all:
 		$(call print_progress_bar, $${CURRENT_MAKEFILE} ,$(NUM_MAKEFILES)); \
 		make -s -C $${dir} ${CIBLE_MAKE_MSG}; \
 		CURRENT_MAKEFILE=$$((CURRENT_MAKEFILE+1)); \
-		sleep 0.25; \
+		sleep 0.1; \
 		printf "\033[A\033[K"; \
 	done; \
 	$(call print_finished); \

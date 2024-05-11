@@ -30,4 +30,3 @@ En somme, le passage du C au C++ permet aux développeurs d'accéder à un ensem
 | FINIR le module 00 | OUI |
 | FINIR le module 01 | OUI |
 | FINIR le module 02 | NON |
-
