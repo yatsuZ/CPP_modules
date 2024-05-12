@@ -211,4 +211,22 @@ ou classe imbriquer permet de declarer une classe dans une autre classe
 
 permet danticiper des erreur prevue. avec trhow catch et exception est une classe
 
+### Rapelle des cast
 
+| Cast             | Conv | Reintreprete | Upcast | Downcast | Type Qualifer |
+|------------------|------|--------------|--------|----------|---------------|
+| Implicit         | YES  |              | YES    |          |               |
+| static_cast      | YES  |              | YES    | YES      |               |
+| dynamic_cast     |      |              | YES    | YES      |               |
+| const_cast       |      |              |        |          | YES           |
+| reinterpret_cast |      | YES          | YES    | YES      |               |
+| Legacy C cast    | YES  | YES          | YES    | YES      | YES           |
+
+| Cast             | Semantic check | Reliable at run | Tested at run |
+|------------------|----------------|-----------------|---------------|
+| Implicit         | YES            | YES             |               |
+| static_cast      | YES            |                 |               |
+| dynamic_cast     | YES            | YES             | YES           |
+| const_cast       |                |                 |               |
+| reinterpret_cast |                |                 |               |
+| Legacy C cast    |                |                 |               |

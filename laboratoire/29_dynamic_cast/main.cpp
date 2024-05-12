@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 00:29:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/10 13:23:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/12 16:39:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	child1_to_child1(void)
 	Child1	*c;
 	try
 	{
-		Child1	*c = dynamic_cast<Child1 *>(b);
+		c = dynamic_cast<Child1 *>(b);
 	}
 	catch(const std::bad_cast& bc)
 	{
