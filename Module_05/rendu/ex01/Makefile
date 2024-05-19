@@ -6,20 +6,16 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 18:11:24 by yzaoui            #+#    #+#              #
-#    Updated: 2024/04/13 17:33:35 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/05/20 00:24:38 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all re clean fclean val test
 
-############### OBJ de Module 02 exo 03
+############### OBJ de Module 05 exo 00
 
-EX03_FILES =	main.cpp					\
-				Animal/Animal.cpp			\
-				Cat/Cat.cpp					\
-				Dog/Dog.cpp					\
-				WrongAnimal/WrongAnimal.cpp	\
-				WrongCat/WrongCat.cpp
+EX03_FILES =	main.cpp	\
+				Bureaucrat/Bureaucrat.cpp
 
 OBJ_PATH = obj/
 
@@ -31,7 +27,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = Animal_00.out
+PROGRAM_NAME = Form.out
 
 ############### COMMANDE OBLIGATOIRE
 
