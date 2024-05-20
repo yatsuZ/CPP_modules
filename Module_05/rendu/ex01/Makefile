@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 18:11:24 by yzaoui            #+#    #+#              #
-#    Updated: 2024/05/20 00:24:38 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/05/20 20:37:03 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@
 
 ############### OBJ de Module 05 exo 00
 
-EX03_FILES =	main.cpp	\
-				Bureaucrat/Bureaucrat.cpp
+EX03_FILES =	main.cpp					\
+				Bureaucrat/Bureaucrat.cpp	\
+				Form/Form.cpp
 
 OBJ_PATH = obj/
 

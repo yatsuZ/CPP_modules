@@ -6,12 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:23:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/20 00:09:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/20 22:25:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
+#include "./../Form/Form.hpp"
 
 #include <iostream>
 #include <string.h>
@@ -25,6 +26,9 @@
 #define CYAN "\033[36m"
 #define WHITE "\033[37m"
 #define PURPLE "\033[35m"
+
+#define HIGHEST 1
+#define LOWEST 150
 
 class Bureaucrat
 {
@@ -45,22 +49,32 @@ public:
 	void				downGrade(void);
 private:
 	const std::string			_name;
-	int					_grade;
-	void				_verif(void) const;
+	int							_grade;
+	void						_verif(void) const;
 	class GradeTooLowException : public std::exception
 	{
+		private:
+			const std::string	_msg;
 		public :
-			virtual const char* what() const throw()
+			GradeTooLowException(std::string name): _msg("Grade over 150 of " + name + " is to Low !!")
+			{}
+			virtual ~GradeTooLowException() throw() {}
+			virtual const char* what(void) const throw()
 			{
-				return ("Grade is to Low !!");
+				return (this->_msg.c_str());
 			}
 	};
 	class GradeTooHighException : public std::exception
 	{
+		private:
+			const std::string	_msg;
 		public :
-			virtual const char* what() const throw()
+			GradeTooHighException(const std::string name): _msg("Grade less 1 of " + name + " is to High !!")
+			{}
+			virtual ~GradeTooHighException() throw() {}
+			virtual const char* what(void) const throw()
 			{
-				return ("Grade is to High !!");
+				return (this->_msg.c_str());
 			}
 	};
 };
