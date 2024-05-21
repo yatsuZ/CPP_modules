@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:23:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/20 23:29:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/21 14:46:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	step01(Form &Contrat, Bureaucrat &Manager)
 {
 	std::cout << std::endl;
-	Manager.signForm(Contrat);
+	Manager.bureaucratTryToSigneAForm(Contrat);
 }
 
 void	step02(Form &Contrat, Bureaucrat &Manager)
 {
 	std::cout << std::endl;
 	Manager.setGrade(24);
-	Manager.signForm(Contrat);
+	Manager.bureaucratTryToSigneAForm(Contrat);
 }
 
 void	step03(Form &Contrat, Bureaucrat &Manager)
@@ -30,7 +30,7 @@ void	step03(Form &Contrat, Bureaucrat &Manager)
 	std::cout << std::endl;
 	Manager.downGrade();
 	Manager.downGrade();
-	Manager.signForm(Contrat);
+	Manager.bureaucratTryToSigneAForm(Contrat);
 }
 
 int	main(void)

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:24:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/20 23:25:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/21 14:47:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ std::ostream	&operator<<( std::ostream & o, Bureaucrat const & rhs)
 	return o;
 }
 
-void	Bureaucrat::signForm(Form document)
+void	Bureaucrat::bureaucratTryToSigneAForm(Form document)
 {
 	try
 	{
@@ -110,8 +110,14 @@ void	Bureaucrat::signForm(Form document)
 		std::cerr << RED << e.what() << NOCOLOR << std::endl;
 		return ;
 	}
+	this->signForm(document);
+}
+
+
+void	Bureaucrat::signForm(Form document)
+{
 	if (document.getSigned())
 		std::cout << *this << WHITE << " signed " << NOCOLOR << document << std::endl;
 	else
-		std::cout << *this << WHITE << " couldn’t sign " << NOCOLOR << document << " because the burocrate have a grade to high" << std::endl;
+		std::cout << *this << WHITE << " couldn’t sign " << NOCOLOR << document << " because the Bureaucrat has too high grade to Executed the Form" << std::endl;
 }

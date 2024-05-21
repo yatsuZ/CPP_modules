@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 00:23:22 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/20 23:42:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/21 14:37:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	Form::_verifs(void) const
 	int	var_executed = this->_verifExecuted();
 	int	var_signed = this->_verifSigned();
 	if (var_executed == 1 || var_signed == 1)
-		throw GradeTooLowException(this->getName());
+		throw Form::GradeTooLowException(this->getName());
 	if (var_executed == 2 || var_signed == 2)
-		throw GradeTooHighException(this->getName());
+		throw Form::GradeTooHighException(this->getName());
 }
 
 const std::string	Form::getName(void) const
@@ -97,10 +97,14 @@ int			Form::getGradeExecuted(void) const
 
 void	Form::beSigned(Bureaucrat signer)
 {
-	if (signer.getGrade() <= this->getGradeSigned() && signer.getGrade() > this->getGradeExecuted())
-		this->_signed = true;
-	else if (signer.getGrade() > this->getGradeSigned())
+	const int	gradeOfSigner = signer.getGrade();
+	const int	minimalGradeForSigne = this->getGradeSigned();
+	const int	maximalGradeForSigne = this->getGradeExecuted();
+	
+	if (gradeOfSigner > minimalGradeForSigne)
 		throw Form::GradeTooLowException(signer.getName());
+	if (gradeOfSigner > maximalGradeForSigne)
+		this->_signed = true;
 }
 
 
