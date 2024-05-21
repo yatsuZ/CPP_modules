@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:58:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 19:26:41 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 01:30:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 
 class AForm
 {
+protected:
+	virtual void		actionExecute(void) const = 0;
 private:
+	void				_signedTrue(void);
 	const std::string	_name;
 	bool				_signed;
 	const int			_gradeSigned;
@@ -62,10 +65,11 @@ public:
 
 	const std::string	getName(void) const;
 	bool				getSigned(void) const;
-	int			getGradeSigned(void) const;
-	int			getGradeExecuted(void) const;
+	int					getGradeSigned(void) const;
+	int					getGradeExecuted(void) const;
 
-	virtual void	beSigned(Bureaucrat signer) = 0;
+	void				beSigned(Bureaucrat signer);
+	void				execute(Bureaucrat const & executor) const;
 };
 
 std::ostream & operator<<( std::ostream & o, AForm const & rhs);

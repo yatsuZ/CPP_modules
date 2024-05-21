@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:00:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 19:31:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 01:35:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 #include "./../AForm.hpp"
 
-#define SIGN 145
-#define EXEC 137
+#define SIGN 25
+#define EXEC 5
 
 class PresidentialPardonForm: public AForm
 {
@@ -30,8 +30,8 @@ public:
 	~PresidentialPardonForm();
 
 	const std::string		getTarget(void) const;
+	void		actionExecute(void) const;
 
-	void	beSigned(Bureaucrat signer);
 };
 
 std::ostream & operator<<(std::ostream & o, PresidentialPardonForm const & rhs);

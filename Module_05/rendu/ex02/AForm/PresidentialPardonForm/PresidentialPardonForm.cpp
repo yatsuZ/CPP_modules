@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:00:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 19:41:10 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 01:35:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ PresidentialPardonForm::PresidentialPardonForm(): AForm::AForm("PresidentialPard
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target): AForm::AForm("PresidentialPardonForm", SIGN, EXEC), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target): AForm::AForm("PresidentialPardonForm", SIGN, EXEC), _target(target + "_shrubbery")
 {
 }
 
@@ -35,16 +35,10 @@ PresidentialPardonForm::~PresidentialPardonForm()
 {
 }
 
-void	PresidentialPardonForm::beSigned(Bureaucrat signer)
-{
-	const int	gradeOfSigner = signer.getGrade();
-	const int	minimalGradeForSigne = this->getGradeSigned();
-	const int	maximalGradeForSigne = this->getGradeExecuted();
-	
-	if (gradeOfSigner > minimalGradeForSigne)
-		throw GradeTooLowException(signer.getName());
-	if (gradeOfSigner > maximalGradeForSigne)
-		std::cout << "Je ne sais pas quoi faire ??" << std::endl;// ???????????
+//Informe que <target> a été graciée par Zaphod Beeblebrox
+void	PresidentialPardonForm::actionExecute() const
+{// avec des sleep pimpe
+	std::cout << GREEN << "The target " << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << NOCOLOR << std::endl;
 }
 
 const std::string	PresidentialPardonForm::getTarget(void) const
@@ -57,7 +51,7 @@ std::ostream & operator<<(std::ostream & o, PresidentialPardonForm const & rhs)
 	std::stringstream ss;
 
 	int nameWidth = 50;
-	if (("| Name du AForm : " + rhs.getName()).length() > static_cast<size_t>(nameWidth))
+	if (("| Target file : " + rhs.getName()).length() > static_cast<size_t>(nameWidth))
 	{
 		nameWidth = ("| Name du AForm : " + rhs.getName()).length();
 		nameWidth += nameWidth % 2;

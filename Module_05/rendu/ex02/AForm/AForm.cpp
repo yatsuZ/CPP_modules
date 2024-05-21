@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:58:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 19:40:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 01:04:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ int			AForm::getGradeExecuted(void) const
 
 //////////////////////////////////////////////////////
 
+void	AForm::_signedTrue(void)
+{
+	this->_signed = true;
+}
+
 void	AForm::beSigned(Bureaucrat signer)
 {
 	const int	gradeOfSigner = signer.getGrade();
@@ -104,9 +109,20 @@ void	AForm::beSigned(Bureaucrat signer)
 	if (gradeOfSigner > minimalGradeForSigne)
 		throw AForm::GradeTooLowException(signer.getName());
 	if (gradeOfSigner > maximalGradeForSigne)
-		this->_signed = true;
+		this->_signedTrue();
 }
 
+void	AForm::execute(Bureaucrat const & executor) const
+{
+	const int	gradeOfSigner = executor.getGrade();
+	const int	minimalGradeForSigne = this->getGradeSigned();
+	const int	maximalGradeForSigne = this->getGradeExecuted();
+	
+	if (gradeOfSigner > minimalGradeForSigne)
+		throw AForm::GradeTooLowException(executor.getName());
+	if (this->getSigned())
+		this->actionExecute();
+}
 
 void	drawLigneTab(std::stringstream &ss, int firstColone, int secondColone)
 {

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:23:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 19:41:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 01:35:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int	main(void)
 {
-	std::cout << "Faire PresidentialPardonForm" << std::endl;
+	std::cout << "Faire PresidentialPardonForm et le pimpe" << std::endl;
 	PresidentialPardonForm	test("MR.President");
 	std::cout << "Faire RobotomyRequestForm" << std::endl;
 	std::cout << "Faire ShrubberyCreationForm" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:23:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 19:10:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 01:29:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ public:
 
 	void				signForm(AForm &document);
 	void				bureaucratTryToSigneAForm(AForm &document);
+	void				executeForm(AForm const & form);
+
 private:
 	const std::string			_name;
 	int							_grade;
