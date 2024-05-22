@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 00:23:14 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 14:32:49 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/05/22 19:41:44 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/05/22 19:42:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 
 class Form
 {
+protected:
+	virtual void		actionExecute(void) const = 0;
 private:
+	void				_signedTrue(void);
 	const std::string	_name;
 	bool				_signed;
 	const int			_gradeSigned;
@@ -25,6 +28,7 @@ private:
 	int					_verifSigned(void) const;
 	int					_verifExecuted(void) const;
 	void				_verifs(void) const;
+public:
 // Peut rajouter une exception si le Form est deja signée
 	class GradeTooLowException : public std::exception
 	{
@@ -52,22 +56,23 @@ private:
 				return (this->_msg.c_str());
 			}
 	};
-public:
 	Form(void);
 	Form(Form const &src);
 	Form				&operator=(Form const &src);
-	~Form();
+	virtual ~Form();
 
 	Form(std::string name, int gradeSigned, int radeExecuted);
 
 	const std::string	getName(void) const;
 	bool				getSigned(void) const;
-	int			getGradeSigned(void) const;
-	int			getGradeExecuted(void) const;
+	int					getGradeSigned(void) const;
+	int					getGradeExecuted(void) const;
 
-	void	beSigned(Bureaucrat signer);
+	void				beSigned(Bureaucrat signer);
+	void				execute(Bureaucrat const & executor) const;
 };
 
 std::ostream & operator<<( std::ostream & o, Form const & rhs);
+void	drawLigneTab(std::stringstream &ss, int firstColone, int secondColone);
 
 #endif

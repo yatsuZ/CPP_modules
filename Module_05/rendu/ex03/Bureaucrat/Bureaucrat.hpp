@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:23:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 13:33:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:55:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 #define HIGHEST 1
 #define LOWEST 150
 
-class AForm;
+class Form;
 
 class Bureaucrat
 {
@@ -51,8 +51,8 @@ public:
 	void				upGrade(void);
 	void				downGrade(void);
 
-	void				signForm(AForm &document);
-	void				executeForm(AForm const & form);
+	void				signForm(Form &document);
+	void				executeForm(Form const & form);
 
 private:
 	const std::string			_name;

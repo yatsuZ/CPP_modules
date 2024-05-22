@@ -6,11 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:24:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 13:42:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:54:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../AForm/AForm.hpp"
+#include "./../Form/Form.hpp"
 
 void	Bureaucrat::_verif(void) const
 {
@@ -93,7 +93,7 @@ void	Bureaucrat::downGrade(void)
 	this->_verif();
 }
 
-void	Bureaucrat::signForm(AForm &document)
+void	Bureaucrat::signForm(Form &document)
 {
 	try
 	{
@@ -107,7 +107,7 @@ void	Bureaucrat::signForm(AForm &document)
 	}
 }
 
-void	Bureaucrat::executeForm(AForm const & form)
+void	Bureaucrat::executeForm(Form const & form)
 {
 	try
 	{

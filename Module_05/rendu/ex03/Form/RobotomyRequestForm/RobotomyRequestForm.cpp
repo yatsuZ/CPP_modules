@@ -6,21 +6,21 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:59:49 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 14:37:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:50:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm::AForm("RobotomyRequestForm", ROBOT_SIGN, ROBOT_EXEC), _target("UNKNOW")
+RobotomyRequestForm::RobotomyRequestForm(): Form::Form("RobotomyRequestForm", ROBOT_SIGN, ROBOT_EXEC), _target("UNKNOW")
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string target): AForm::AForm("RobotomyRequestForm", ROBOT_SIGN, ROBOT_EXEC), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string target): Form::Form("RobotomyRequestForm", ROBOT_SIGN, ROBOT_EXEC), _target(target)
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src): AForm::AForm("RobotomyRequestForm", ROBOT_SIGN, ROBOT_EXEC), _target(src.getTarget())
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src): Form::Form("RobotomyRequestForm", ROBOT_SIGN, ROBOT_EXEC), _target(src.getTarget())
 {
 	*this = src;
 }
@@ -78,7 +78,7 @@ std::ostream & operator<<(std::ostream & o, RobotomyRequestForm const & rhs)
 	int nameWidth = 50;
 	if (("| Target file : " + rhs.getName()).length() > static_cast<size_t>(nameWidth))
 	{
-		nameWidth = ("| Name du AForm : " + rhs.getName()).length();
+		nameWidth = ("| Name du Form : " + rhs.getName()).length();
 		nameWidth += nameWidth % 2;
 	}
 	int signedWidth = 14;
@@ -92,7 +92,7 @@ std::ostream & operator<<(std::ostream & o, RobotomyRequestForm const & rhs)
 
 	o << ss.str();
 
-	o << static_cast<const AForm &>(rhs);
+	o << static_cast<const Form &>(rhs);
 
 	return o;
 }

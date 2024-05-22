@@ -6,17 +6,16 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 16:14:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 19:05:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:54:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
-#include "./../AForm/PresidentialPardonForm/PresidentialPardonForm.hpp"
-#include "./../AForm/RobotomyRequestForm/RobotomyRequestForm.hpp"
-#include "./../AForm/ShrubberyCreationForm/ShrubberyCreationForm.hpp"
-#include "./../Form/Form.hpp"
+#include "./../Form/PresidentialPardonForm/PresidentialPardonForm.hpp"
+#include "./../Form/RobotomyRequestForm/RobotomyRequestForm.hpp"
+#include "./../Form/ShrubberyCreationForm/ShrubberyCreationForm.hpp"
 
 class Intern
 {
@@ -26,13 +25,13 @@ public:
 	Intern	&operator=(Intern const &src);
 	~Intern();
 
-	AForm	*makeForm(const std::string name, const std::string target);
+	Form	*makeForm(const std::string name, const std::string target);
 	class DontFindForm : public std::exception
 	{
 		private:
 			const std::string	_msg;
 		public :
-			DontFindForm(std::string name): _msg("Intern: No find this AForm -> " + name)
+			DontFindForm(std::string name): _msg("Intern: No find this Form -> " + name)
 			{}
 			virtual ~DontFindForm() throw() {}
 			virtual const char* what(void) const throw()

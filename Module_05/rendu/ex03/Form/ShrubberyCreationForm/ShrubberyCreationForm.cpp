@@ -6,21 +6,21 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:59:07 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 16:04:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:50:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm::AForm("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target("UNKNOW")
+ShrubberyCreationForm::ShrubberyCreationForm(): Form::Form("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target("UNKNOW")
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string target): AForm::AForm("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target): Form::Form("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(target)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src): AForm::AForm("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(src.getTarget())
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src): Form::Form("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(src.getTarget())
 {
 	*this = src;
 }
@@ -75,7 +75,7 @@ std::ostream & operator<<(std::ostream & o, ShrubberyCreationForm const & rhs)
 	int nameWidth = 50;
 	if (("| Target file : " + rhs.getName()).length() > static_cast<size_t>(nameWidth))
 	{
-		nameWidth = ("| Name du AForm : " + rhs.getName()).length();
+		nameWidth = ("| Name du Form : " + rhs.getName()).length();
 		nameWidth += nameWidth % 2;
 	}
 	int signedWidth = 14;
@@ -89,7 +89,7 @@ std::ostream & operator<<(std::ostream & o, ShrubberyCreationForm const & rhs)
 
 	o << ss.str();
 
-	o << static_cast<const AForm &>(rhs);
+	o << static_cast<const Form &>(rhs);
 
 	return o;
 }

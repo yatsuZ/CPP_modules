@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 00:23:22 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 14:37:15 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/05/22 19:41:51 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/05/22 19:43:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 Form::Form(void): _name("DefaultName"), _signed(false), _gradeSigned(150), _gradeExecuted(1)
 {
-	std::cout << GREEN << "Constructor Form call" << NOCOLOR << std::endl;
+	// std::cout << GREEN << "Constructor Form call" << NOCOLOR << std::endl;
 }
 
-Form::Form(Form const &src): _name(src.getName()), _signed(src.getSigned()), _gradeSigned(src.getGradeSigned()), _gradeExecuted(src.getGradeExecuted())
+Form::Form(Form const &src):_name(src.getName()), _signed(src.getSigned()), _gradeSigned(src.getGradeSigned()), _gradeExecuted(src.getGradeExecuted())
 {
 	// std::cout << WHITE << "Constructor Copy Form call" << NOCOLOR << std::endl;
 	*this = src;
@@ -39,7 +39,7 @@ Form::~Form()
 Form::Form(std::string name, int gradeSigned, int radeExecuted): _name(name), _signed(false), _gradeSigned(gradeSigned), _gradeExecuted(radeExecuted)
 {
 	// faire une exeception pour le grade
-	std::cout << BLUE << "Constructor Parametric Form call" << NOCOLOR << std::endl;
+	// std::cout << BLUE << "Constructor Parametric Form call" << NOCOLOR << std::endl;
 	this->_verifs();
 }
 
@@ -95,20 +95,29 @@ int			Form::getGradeExecuted(void) const
 
 //////////////////////////////////////////////////////
 
-void	Form::beSigned(Bureaucrat signer)
+void	Form::_signedTrue(void)
 {
-	const int	gradeOfSigner = signer.getGrade();
-	const int	minimalGradeForSigne = this->getGradeSigned();
-	const int	maximalGradeForSigne = this->getGradeExecuted();
-	
-	if (gradeOfSigner > minimalGradeForSigne)
-		throw Form::GradeTooLowException(signer.getName());
-	if (gradeOfSigner > maximalGradeForSigne)
-		this->_signed = true;
+	this->_signed = true;
 }
 
+void	Form::beSigned(Bureaucrat signer)
+{
+	if (signer.getGrade() > this->getGradeSigned())
+		throw Form::GradeTooLowException(signer.getName());
+	else
+		this->_signedTrue();
+}
 
-static void	drawLigneTab(std::stringstream &ss, int firstColone, int secondColone)
+void	Form::execute(Bureaucrat const & executor) const
+{
+	
+	if (executor.getGrade() > this->getGradeExecuted())
+		throw Form::GradeTooLowException(executor.getName());
+	if (this->getSigned())
+		this->actionExecute();
+}
+
+void	drawLigneTab(std::stringstream &ss, int firstColone, int secondColone)
 {
 
 	ss	<< "+" << std::string(firstColone - 1, '-');
@@ -121,15 +130,19 @@ std::ostream & operator<<(std::ostream & o, Form const & rhs)
 
 	// Définir les largeurs de colonnes
 	int nameWidth = 50;
+	if (("| Name du Form : " + rhs.getName()).length() > static_cast<size_t>(nameWidth))
+	{
+		nameWidth = ("| Name du Form : " + rhs.getName()).length();
+		nameWidth += nameWidth % 2;
+	}
 	int signedWidth = 14;
-	int gradeWidth = 25;
+	int gradeWidth = nameWidth / 2;
 
-	ss	<< std::endl;
 	drawLigneTab(ss, nameWidth, signedWidth);
 	ss	<< std::endl;
 
 	// Entête du tableau
-	ss	<< std::left << std::setw(nameWidth) << ("| Name du form : " + rhs.getName())
+	ss	<< std::left << std::setw(nameWidth) << ("| Name du Form : " + rhs.getName())
 		<< std::setw(signedWidth) << "| Is Signed ? "
 		<< "|" << std::endl;
 

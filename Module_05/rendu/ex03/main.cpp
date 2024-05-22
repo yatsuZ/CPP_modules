@@ -6,16 +6,17 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:23:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 19:07:21 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 20:01:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Intern/Intern.hpp"
 
-void	testAForm(Bureaucrat &sigateur, Bureaucrat &executeur, AForm *Form)
+void	testForm(Bureaucrat &sigateur, Bureaucrat &executeur, Form *contract)
 {
-	sigateur.signForm(*Form);
-	executeur.executeForm(*Form);
+	sigateur.signForm(*contract);
+	executeur.executeForm(*contract);
+	delete	contract;
 }
 
 void	test1(void)
@@ -24,14 +25,14 @@ void	test1(void)
 	Bureaucrat Signateur("Signateur", 1);
 	Bureaucrat Executeur("Executeur", 25);
 
-	testAForm(Signateur, Executeur, someRandomIntern.makeForm("presidential pardon", "Gracieur"));
+	testForm(Signateur, Executeur, someRandomIntern.makeForm("presidential pardon", "Gracieur"));
 	std::cout << std::endl << "----------------------" << std::endl << std::endl;
-	testAForm(Signateur, Executeur, someRandomIntern.makeForm("robotomy request", "Bender"));
+	testForm(Signateur, Executeur, someRandomIntern.makeForm("robotomy request", "Bender"));
 	std::cout << std::endl << "----------------------" << std::endl << std::endl;
-	testAForm(Signateur, Executeur, someRandomIntern.makeForm("shrubbery creation", "Gaya"));
+	testForm(Signateur, Executeur, someRandomIntern.makeForm("shrubbery creation", "Gaya"));
 	try
 	{
-		testAForm(Signateur, Executeur, someRandomIntern.makeForm("IDK", "Crash"));
+		testForm(Signateur, Executeur, someRandomIntern.makeForm("IDK", "Crash"));
 	}
 	catch(const std::exception& e)
 	{
@@ -42,10 +43,13 @@ void	test1(void)
 void	test0(void)
 {
 	Intern someRandomIntern;
-	AForm* rrf;
+	Form* rrf;
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	delete rrf;
 	(void) rrf;
 }
+
+// Probleme avec AForm et Form pour sadapter aux exemple...
 
 int	main(void)
 {

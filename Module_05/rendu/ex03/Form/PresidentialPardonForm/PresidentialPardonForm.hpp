@@ -6,21 +6,21 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:00:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 18:20:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:50:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
 
-#include "./../AForm.hpp"
+#include "./../Form.hpp"
 
 #include <unistd.h>
 
 #define PRESIDENT_SIGN 25
 #define PRESIDENT_EXEC 5
 
-class PresidentialPardonForm: public AForm
+class PresidentialPardonForm: public Form
 {
 private:
 	const std::string		_target;

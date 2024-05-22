@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 18:11:24 by yzaoui            #+#    #+#              #
-#    Updated: 2024/05/22 18:09:12 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/05/22 19:51:39 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,11 @@
 
 EX03_FILES =	main.cpp												\
 				Bureaucrat/Bureaucrat.cpp								\
-				AForm/AForm.cpp											\
-				AForm/ShrubberyCreationForm/ShrubberyCreationForm.cpp	\
-				AForm/RobotomyRequestForm/RobotomyRequestForm.cpp		\
-				AForm/PresidentialPardonForm/PresidentialPardonForm.cpp	\
-				Intern/Intern.cpp										\
-				Form/Form.cpp
+				Form/Form.cpp											\
+				Form/ShrubberyCreationForm/ShrubberyCreationForm.cpp	\
+				Form/RobotomyRequestForm/RobotomyRequestForm.cpp		\
+				Form/PresidentialPardonForm/PresidentialPardonForm.cpp	\
+				Intern/Intern.cpp
 
 
 OBJ_PATH = obj/

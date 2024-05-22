@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 16:14:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 19:12:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:54:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,31 @@ Intern::~Intern()
 {
 }
 
-static AForm	*createAFormPresidential(std::string target)
+static Form	*createFormPresidential(std::string target)
 {
 	return (new PresidentialPardonForm(target));
 }
 
-static AForm	*createAFormRobotomy(std::string target)
+static Form	*createFormRobotomy(std::string target)
 {
 	return (new RobotomyRequestForm(target));
 }
 
-static AForm	*createAFormShrubbery(std::string target)
+static Form	*createFormShrubbery(std::string target)
 {
 	return (new ShrubberyCreationForm(target));
 }
 
-AForm	*Intern::makeForm(const std::string name, const std::string target)
+Form	*Intern::makeForm(const std::string name, const std::string target)
 {
-	static AForm* (*AllInit[3])(const std::string) = {createAFormRobotomy, createAFormShrubbery, createAFormPresidential};
+	static Form* (*AllInit[3])(const std::string) = {createFormRobotomy, createFormShrubbery, createFormPresidential};
 	static const std::string	AllName[3] = {"robotomy request", "shrubbery creation", "presidential pardon"};
 
 	for (size_t i = 0; i < AllName->length(); i++)
 	{
 		if (AllName[i] == name)
 		{
-			AForm	*res = AllInit[i](target);
+			Form	*res = AllInit[i](target);
 			std::cout << "Intern creates " << std::endl << *res << std::endl;
 			return (res);
 		}

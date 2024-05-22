@@ -6,21 +6,21 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:00:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 18:20:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:50:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm::AForm("PresidentialPardonForm", PRESIDENT_SIGN, PRESIDENT_EXEC), _target("UNKNOW")
+PresidentialPardonForm::PresidentialPardonForm(): Form::Form("PresidentialPardonForm", PRESIDENT_SIGN, PRESIDENT_EXEC), _target("UNKNOW")
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target): AForm::AForm("PresidentialPardonForm", PRESIDENT_SIGN, PRESIDENT_EXEC), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target): Form::Form("PresidentialPardonForm", PRESIDENT_SIGN, PRESIDENT_EXEC), _target(target)
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src): AForm::AForm("PresidentialPardonForm", PRESIDENT_SIGN, PRESIDENT_EXEC), _target(src.getTarget())
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src): Form::Form("PresidentialPardonForm", PRESIDENT_SIGN, PRESIDENT_EXEC), _target(src.getTarget())
 {
 	*this = src;
 }
@@ -73,7 +73,7 @@ std::ostream & operator<<(std::ostream & o, PresidentialPardonForm const & rhs)
 	int nameWidth = 50;
 	if (("| Target file : " + rhs.getName()).length() > static_cast<size_t>(nameWidth))
 	{
-		nameWidth = ("| Name du AForm : " + rhs.getName()).length();
+		nameWidth = ("| Name du Form : " + rhs.getName()).length();
 		nameWidth += nameWidth % 2;
 	}
 	int signedWidth = 14;
@@ -87,7 +87,7 @@ std::ostream & operator<<(std::ostream & o, PresidentialPardonForm const & rhs)
 
 	o << ss.str();
 
-	o << static_cast<const AForm &>(rhs);
+	o << static_cast<const Form &>(rhs);
 
 	return o;
 }
