@@ -1,51 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 14:58:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 11:48:43 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/05/20 00:23:22 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/05/21 14:37:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./AForm.hpp"
+#include "./Form.hpp"
 
-AForm::AForm(void): _name("DefaultName"), _signed(false), _gradeSigned(150), _gradeExecuted(1)
+Form::Form(void): _name("DefaultName"), _signed(false), _gradeSigned(150), _gradeExecuted(1)
 {
-	// std::cout << GREEN << "Constructor AForm call" << NOCOLOR << std::endl;
+	std::cout << GREEN << "Constructor Form call" << NOCOLOR << std::endl;
 }
 
-AForm::AForm(AForm const &src): _name(src.getName()), _signed(src.getSigned()), _gradeSigned(src.getGradeSigned()), _gradeExecuted(src.getGradeExecuted())
+Form::Form(Form const &src): _name(src.getName()), _signed(src.getSigned()), _gradeSigned(src.getGradeSigned()), _gradeExecuted(src.getGradeExecuted())
 {
-	// std::cout << WHITE << "Constructor Copy AForm call" << NOCOLOR << std::endl;
+	// std::cout << WHITE << "Constructor Copy Form call" << NOCOLOR << std::endl;
 	*this = src;
 }
 
-AForm				&AForm::operator=(AForm const &src)
+Form				&Form::operator=(Form const &src)
 {
 	if (this != &src)
 		this->_signed = src.getSigned();
 	return (*this);
 }
 
-AForm::~AForm()
+Form::~Form()
 {
-	// std::cout << MAGENTA << "Destructor AForm call" << NOCOLOR << std::endl;
+	// std::cout << MAGENTA << "Destructor Form call" << NOCOLOR << std::endl;
 }
 
 
-AForm::AForm(std::string name, int gradeSigned, int radeExecuted): _name(name), _signed(false), _gradeSigned(gradeSigned), _gradeExecuted(radeExecuted)
+Form::Form(std::string name, int gradeSigned, int radeExecuted): _name(name), _signed(false), _gradeSigned(gradeSigned), _gradeExecuted(radeExecuted)
 {
 	// faire une exeception pour le grade
-	// std::cout << BLUE << "Constructor Parametric AForm call" << NOCOLOR << std::endl;
+	std::cout << BLUE << "Constructor Parametric Form call" << NOCOLOR << std::endl;
 	this->_verifs();
 }
 
 /////////////////////////////////////////
 
-int	AForm::_verifExecuted(void) const
+int	Form::_verifExecuted(void) const
 {
 	if (this->_gradeExecuted > LOWEST)
 		return (1);
@@ -54,7 +54,7 @@ int	AForm::_verifExecuted(void) const
 	return (0);
 }
 
-int	AForm::_verifSigned(void) const
+int	Form::_verifSigned(void) const
 {
 	if (this->_gradeSigned > LOWEST)
 		return (1);
@@ -63,86 +63,73 @@ int	AForm::_verifSigned(void) const
 	return (0);
 }
 
-void	AForm::_verifs(void) const
+void	Form::_verifs(void) const
 {
 	int	var_executed = this->_verifExecuted();
 	int	var_signed = this->_verifSigned();
 	if (var_executed == 1 || var_signed == 1)
-		throw AForm::GradeTooLowException(this->getName());
+		throw Form::GradeTooLowException(this->getName());
 	if (var_executed == 2 || var_signed == 2)
-		throw AForm::GradeTooHighException(this->getName());
+		throw Form::GradeTooHighException(this->getName());
 }
 
-const std::string	AForm::getName(void) const
+const std::string	Form::getName(void) const
 {
 	return (this->_name);
 }
 
-bool				AForm::getSigned(void) const
+bool				Form::getSigned(void) const
 {
 	return (this->_signed);
 }
 
-int			AForm::getGradeSigned(void) const
+int			Form::getGradeSigned(void) const
 {
 	return (this->_gradeSigned);
 }
 
-int			AForm::getGradeExecuted(void) const
+int			Form::getGradeExecuted(void) const
 {
 	return (this->_gradeExecuted);
 }
 
 //////////////////////////////////////////////////////
 
-void	AForm::_signedTrue(void)
+void	Form::beSigned(Bureaucrat signer)
 {
-	this->_signed = true;
-}
-
-void	AForm::beSigned(Bureaucrat signer)
-{
-	if (signer.getGrade() > this->getGradeSigned())
-		throw AForm::GradeTooLowException(signer.getName());
-	else
-		this->_signedTrue();
-}
-
-void	AForm::execute(Bureaucrat const & executor) const
-{
+	const int	gradeOfSigner = signer.getGrade();
+	const int	minimalGradeForSigne = this->getGradeSigned();
+	const int	maximalGradeForSigne = this->getGradeExecuted();
 	
-	if (executor.getGrade() > this->getGradeExecuted())
-		throw AForm::GradeTooLowException(executor.getName());
-	if (this->getSigned())
-		this->actionExecute();
+	if (gradeOfSigner > minimalGradeForSigne)
+		throw Form::GradeTooLowException(signer.getName());
+	if (gradeOfSigner > maximalGradeForSigne)
+		this->_signed = true;
 }
 
-void	drawLigneTab(std::stringstream &ss, int firstColone, int secondColone)
+
+static void	drawLigneTab(std::stringstream &ss, int firstColone, int secondColone)
 {
 
 	ss	<< "+" << std::string(firstColone - 1, '-');
 	ss	<< "+" << std::string(secondColone - 1, '-') << "+";
 }
 
-std::ostream & operator<<(std::ostream & o, AForm const & rhs)
+std::ostream & operator<<(std::ostream & o, Form const & rhs)
 {
 	std::stringstream ss;
 
 	// Définir les largeurs de colonnes
 	int nameWidth = 50;
-	if (("| Name du AForm : " + rhs.getName()).length() > static_cast<size_t>(nameWidth))
-	{
-		nameWidth = ("| Name du AForm : " + rhs.getName()).length();
-		nameWidth += nameWidth % 2;
-	}
 	int signedWidth = 14;
-	int gradeWidth = nameWidth / 2;
+	int gradeWidth = 25;
 
+	ss	<< std::endl;
 	drawLigneTab(ss, nameWidth, signedWidth);
 	ss	<< std::endl;
 
 	// Entête du tableau
-	ss	<< std::left << std::setw(nameWidth) << ("| Name du AForm : " + rhs.getName())
+	ss	<< std::left << std::setw(nameWidth) << ("| Name du form : " + rhs.getName())
 		<< std::setw(signedWidth) << "| Is Signed ? "
 		<< "|" << std::endl;
 

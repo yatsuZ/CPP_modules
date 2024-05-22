@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:58:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 11:48:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:07:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ AForm::AForm(void): _name("DefaultName"), _signed(false), _gradeSigned(150), _gr
 	// std::cout << GREEN << "Constructor AForm call" << NOCOLOR << std::endl;
 }
 
-AForm::AForm(AForm const &src): _name(src.getName()), _signed(src.getSigned()), _gradeSigned(src.getGradeSigned()), _gradeExecuted(src.getGradeExecuted())
+AForm::AForm(AForm const &src):_name(src.getName()), _signed(src.getSigned()), _gradeSigned(src.getGradeSigned()), _gradeExecuted(src.getGradeExecuted())
 {
 	// std::cout << WHITE << "Constructor Copy AForm call" << NOCOLOR << std::endl;
 	*this = src;
