@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:58:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 11:48:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/28 16:12:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void	AForm::beSigned(Bureaucrat signer)
 
 void	AForm::execute(Bureaucrat const & executor) const
 {
-	
 	if (executor.getGrade() > this->getGradeExecuted())
 		throw AForm::GradeTooLowException(executor.getName());
 	if (this->getSigned())
@@ -137,7 +136,7 @@ std::ostream & operator<<(std::ostream & o, AForm const & rhs)
 	}
 	int signedWidth = 14;
 	int gradeWidth = nameWidth / 2;
-
+	ss	<< std::endl;
 	drawLigneTab(ss, nameWidth, signedWidth);
 	ss	<< std::endl;
 

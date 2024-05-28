@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:24:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 13:42:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/28 16:03:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,32 +95,19 @@ void	Bureaucrat::downGrade(void)
 
 void	Bureaucrat::signForm(AForm &document)
 {
-	try
-	{
-		document.beSigned(*this);
-		std::cout << *this << WHITE << " signed " << NOCOLOR << std::endl << document << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << *this << RED << " couldn’t sign " << NOCOLOR << std::endl << document << " " << RED << e.what() << NOCOLOR << std::endl;
-		return ;
-	}
+	if (document.getSigned())
+		std::cout << *this << WHITE << " signed " << NOCOLOR << document << std::endl;
+	else
+		std::cerr << *this << RED << " couldn’t sign " << NOCOLOR << document << " because no bureaucrat signed" << NOCOLOR << std::endl;
 }
 
 void	Bureaucrat::executeForm(AForm const & form)
 {
-	try
-	{
-		form.execute(*this);
-		if (form.getSigned())
-			std::cout << *this << GREEN << " EXECUTE " << NOCOLOR << std::endl << form << std::endl;
-		else
-			std::cout << *this << RED << " CAN'T EXECUTE " << NOCOLOR << std::endl << form << " Because it's not signed...."<< std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << *this << RED << " couldn’t EXECUTE " << NOCOLOR << std::endl << form << " " << RED << e.what() << NOCOLOR << std::endl;
-	}
+	form.execute(*this);
+	if (form.getSigned())
+		std::cout << *this << GREEN << " EXECUTE " << NOCOLOR << std::endl << form << std::endl;
+	else
+		std::cout << *this << RED << " CAN'T EXECUTE " << NOCOLOR << std::endl << form << " Because it's not signed...."<< std::endl;
 }
 
 std::ostream	&operator<<( std::ostream & o, Bureaucrat const & rhs)

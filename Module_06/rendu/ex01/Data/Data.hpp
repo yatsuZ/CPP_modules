@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:11:15 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/28 00:11:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/28 16:45:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ public:
 template<typename T>// Les template doivent etre definie directement dans le header
 Data::Data(T value)
 {
+	std::cout << GREEN << "value = " << value << NOCOLOR << std::endl;
+	std::cout << MAGENTA << "value est stockée dans la classe Data sous un poiteur void. " << NOCOLOR << std::endl;
 	this->_value = reinterpret_cast<void *>(&value);
 }
 

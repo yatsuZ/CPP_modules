@@ -6,15 +6,16 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:23:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/22 20:01:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/28 16:21:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Intern/Intern.hpp"
 
-void	testForm(Bureaucrat &sigateur, Bureaucrat &executeur, Form *contract)
+void	testForm(Bureaucrat &signateur, Bureaucrat &executeur, Form *contract)
 {
-	sigateur.signForm(*contract);
+	// signateur.signForm(*contract);
+	(*contract).beSigned(signateur);
 	executeur.executeForm(*contract);
 	delete	contract;
 }
@@ -23,7 +24,7 @@ void	test1(void)
 {
 	Intern		someRandomIntern;
 	Bureaucrat Signateur("Signateur", 1);
-	Bureaucrat Executeur("Executeur", 25);
+	Bureaucrat Executeur("Executeur", 5);
 
 	testForm(Signateur, Executeur, someRandomIntern.makeForm("presidential pardon", "Gracieur"));
 	std::cout << std::endl << "----------------------" << std::endl << std::endl;

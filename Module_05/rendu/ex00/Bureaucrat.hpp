@@ -6,13 +6,12 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:23:55 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/20 22:25:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/28 16:32:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
-#include "./../Form/Form.hpp"
 
 #include <iostream>
 #include <string.h>

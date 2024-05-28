@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 00:23:22 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/21 14:37:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/28 15:28:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,13 @@ void	Form::beSigned(Bureaucrat signer)
 {
 	const int	gradeOfSigner = signer.getGrade();
 	const int	minimalGradeForSigne = this->getGradeSigned();
-	const int	maximalGradeForSigne = this->getGradeExecuted();
 	
 	if (gradeOfSigner > minimalGradeForSigne)
 		throw Form::GradeTooLowException(signer.getName());
-	if (gradeOfSigner > maximalGradeForSigne)
-		this->_signed = true;
+	this->_signed = true;
 }
 
+//////////////////////////////////////////////////////
 
 static void	drawLigneTab(std::stringstream &ss, int firstColone, int secondColone)
 {
