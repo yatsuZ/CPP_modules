@@ -6,7 +6,17 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 17:06:10 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/28 17:06:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/29 20:07:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./Base.hpp"
+
+Base::Base()
+{
+	std::cout << "Base create" << std::endl;
+}
+
+Base::~Base()
+{
+}

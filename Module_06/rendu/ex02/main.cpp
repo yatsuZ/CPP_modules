@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   B.hpp                                              :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 17:07:58 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/29 18:28:03 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/05/29 17:51:14 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/05/29 20:47:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef B_HPP
-# define B_HPP
+#include "folowingFunction.hpp"
 
-#include "./../Base.hpp"
-
-class B: public Base
+int	main(void)
 {
-public:
-	B();
-	~B();
-};
-
-B::B()
-{
-	std::cout << GREEN << "B create" << NOCOLOR << std::endl;
+	Base	*stockage = generate();
+	Base	*ptr_null = NULL;
+	// connaitre le type de stockage  sans include type info en c++98
+	identify(stockage);
+	identify(*(ptr_null));
+	identify(*stockage);
+	return (0);
 }
-
-B::~B()
-{
-}
-
-#endif

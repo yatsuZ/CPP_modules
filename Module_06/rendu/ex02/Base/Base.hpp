@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 17:06:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/28 17:09:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/29 20:08:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,15 @@
 #define WHITE "\033[37m"
 #define PURPLE "\033[35m"
 
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+class Base
+{
+public:
+	Base();
+	virtual ~Base();
+};
 
 #endif

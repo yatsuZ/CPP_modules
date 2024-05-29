@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 18:11:24 by yzaoui            #+#    #+#              #
-#    Updated: 2024/05/19 23:55:33 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/05/29 20:45:23 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@
 
 ############### OBJ de Module 05 exo 00
 
-EX03_FILES =	main.cpp	\
-				Bureaucrat.cpp
+EX03_FILES =	main.cpp		\
+				Base/Base.cpp	\
+				folowingFunction.cpp
 
 OBJ_PATH = obj/
 
@@ -27,7 +28,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 
-PROGRAM_NAME = Bureaucrat.out
+PROGRAM_NAME = Base.out
 
 ############### COMMANDE OBLIGATOIRE
 
