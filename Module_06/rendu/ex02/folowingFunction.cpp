@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:43:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/29 20:56:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/30 13:59:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 int	generateARandom(int range)
 {
-	std::srand(std::time(0));
 	return (std::rand() % range);
 }
 
