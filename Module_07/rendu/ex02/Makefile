@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 17:07:15 by yzaoui            #+#    #+#              #
-#    Updated: 2024/05/30 23:33:51 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/05/31 18:46:13 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PROG_OBJ = ${addprefix ${OBJ_PATH}, ${EX03_FILES:.cpp=.o}}
 
 RM = rm -rf
 CC = c++
-C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g
+C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g3
 
 PROGRAM_NAME = Array.out
 
