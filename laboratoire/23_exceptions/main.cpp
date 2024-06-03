@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 22:05:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/05 23:09:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/05/19 18:31:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 #define VERT "\x1B[32m"
 #define ROUGE "\x1B[31m"
 
-	class PEBKACException : public std::exception
-	{
-		public :
-			virtual const char* what() const throw(/*peut envoye des info*/)
-			{
-				return ("Problem exists between keyboard and chair de PEBKACException");
-			}
-	};
+class PEBKACException : public std::exception
+{
+	public :
+		virtual const char* what() const throw(/*peut envoye des info*/)
+		{
+			return ("Problem exists between keyboard and chair de PEBKACException");
+		}
+};
 
 
 int getInput()
