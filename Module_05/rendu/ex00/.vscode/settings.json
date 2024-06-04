@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"string": "cpp",
+		"istream": "cpp",
+		"new": "cpp",
+		"ostream": "cpp",
+		"stdexcept": "cpp",
+		"streambuf": "cpp",
+		"system_error": "cpp",
+		"string_view": "cpp"
+	}
+}
