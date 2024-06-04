@@ -6,15 +6,19 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:49:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/03 13:39:21 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/04 14:05:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 
-int main() {
-	std::vector<int> vec = {1, 2, 3, 4, 5};
-	std::list<int> lst = {10, 20, 30, 40, 50};
+int main()
+{
+	static const int arr[] = {1, 2, 3, 4, 5};
+	std::vector<int> vec(arr, arr + sizeof(arr) / sizeof(arr[0]) );
+
+	static const int arr2[] = {10, 20, 30, 40, 50};
+	std::list<int> lst(arr2, arr2 + sizeof(arr2) / sizeof(arr2[0]) );
 
 	try {
 		std::vector<int>::iterator vec_it = easyfind(vec, 3);

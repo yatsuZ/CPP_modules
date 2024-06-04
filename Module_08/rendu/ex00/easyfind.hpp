@@ -6,23 +6,36 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:05:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/03 13:46:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/04 14:04:32 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
+#include <algorithm>
 #include <iterator>
 #include <exception>
 #include <iostream>
 #include <vector>
 #include <list>
 
-template <typename T = int>
-T easyfind(vector<T> &container, int value)
+class NotFoundException : public std::exception
 {
-	for ()
-}
+	public :
+		virtual const char* what() const throw()
+		{
+			return ("Not Found.");
+		}
+};
+
+template <typename T>
+typename T::iterator easyfind(T &container, int value) {
+	typename T::iterator it = std::find(container.begin(), container.end(), value);
+	if (it == container.end()) {
+		throw NotFoundException();
+	}
+	return it;
+};
 
 #endif
