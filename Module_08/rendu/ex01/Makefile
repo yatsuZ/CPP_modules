@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 17:07:15 by yzaoui            #+#    #+#              #
-#    Updated: 2024/06/04 16:49:31 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/06/07 14:14:07 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 
 ############### OBJ de Module 08 exo 00
 
-EX03_FILES =	main.cpp
+EX03_FILES =	main.cpp	\
+				Span/Span.cpp
 
 OBJ_PATH = obj/
 

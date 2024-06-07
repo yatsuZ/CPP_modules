@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:49:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/04 17:00:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/07 14:13:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 int main()
 {
+	std::cout << "Faire Span" << std::endl;
+
+	Span	test(3);
+
 	
-	
+	test.showSpan();
+
 	return 0;
 }
