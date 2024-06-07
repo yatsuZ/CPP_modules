@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:41:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/27 15:58:19 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/07 16:23:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static double	stringToDouble(const std::string &representation)
 {
 	const char *cstr;
-	if (representation.length() > 1 && representation[representation.length() - 1] == 'f')
+	if (representation != "+inf" && representation != "-inf" && representation.length() > 1 && representation[representation.length() - 1] == 'f')
 		cstr = representation.substr(0, representation.length() - 1).c_str();
 	else if (representation.length() == 1 && !(representation[0] >= '0' && representation[0] <= '9'))
 		return	(static_cast<double>(static_cast<char>(representation[0])));

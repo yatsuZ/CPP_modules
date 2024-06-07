@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:11:15 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/05/28 16:45:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/07 17:10:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ private:
 	void	*_value;
 public:
 	Data(void);
-	template<typename T>
-	T getValue() const;
-	template<typename T> Data(T value);
 	Data(Data const &src);
 	~Data();
 	Data	&operator=(Data const &src);
+
+	template<typename T>
+	T getValue() const;
+	template<typename T> Data(T value);
 };
 
 template<typename T>// Les template doivent etre definie directement dans le header
