@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:32:25 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/10 21:54:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/11 15:12:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define MUTANTSTACK_HPP
 
 #include <iostream>
-#include <string>
+#include <deque>
+#include <exception>
 
 #define NOCOLOR "\033[0m"
 #define RED "\033[31m"
@@ -28,14 +29,46 @@
 
 
 ////////////
-template< typename T>
+template <class T, class Container = std::deque<T> >
 class MutantStack
 {
+public:
+	// Types membres
+	typedef T value_type;
+	typedef Container container_type;
+	typedef typename Container::size_type size_type;
 private:
-	T *			_content;
+	class MethodeContainerException : public std::exception
+	{
+	private:
+		std::string _message;
+	public:
+		NotFoundMethodeContainerException(const std::string &additionalInfo)
+		{
+			_message = std::string("the MutantStack container had a problem with the method: " MAGENTA) + additionalInfo + NOCOLOR + "." ;
+		}
+		MethodeContainerException(void)
+		{
+			_message = std::string("the MutantStack container had a problem with the method.");
+		}
+		virtual ~MethodeContainerException() throw() {}
+		virtual const char *what() const throw()
+		{
+			return _message.c_str();
+		}
+	};
+
+	Container _c;
 public:
 	MutantStack(void);
+	MutantStack(const MutantStack &src);
+	MutantStack(const container_type &src);
+	MutantStack	&operator=(const MutantStack &src);
 	~MutantStack(void);
+
+	bool 		empty() const;
+	size_type	size(void) const;
+
 };
 
 #include "MutantStack.tpp"
