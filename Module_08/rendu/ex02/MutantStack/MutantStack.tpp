@@ -6,12 +6,12 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:51:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/11 15:12:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/11 19:28:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MUTANTSTACK_TPP
-#define MUTANTSTACK_TPP
+# define MUTANTSTACK_TPP
 
 #include "MutantStack.hpp"
 
@@ -28,7 +28,7 @@ MutantStack<T, Container>::MutantStack(const MutantStack &src)
 }
 
 template <typename T, typename Container>
-MutantStack<T, Container>::MutantStack(const container_type &src): _c(src._c)
+MutantStack<T, Container>::MutantStack(const container_type &src): _c(src)
 {
 }
 
@@ -65,7 +65,7 @@ bool 		MutantStack<T, Container>::empty() const
 }
 
 template <typename T, typename Container>
-MutantStack<T, Container>::size_type	MutantStack<T, Container>::size(void) const
+typename MutantStack<T, Container>::size_type	MutantStack<T, Container>::size(void) const
 {
 	if (this->empty())
 		return (0);
@@ -79,6 +79,73 @@ MutantStack<T, Container>::size_type	MutantStack<T, Container>::size(void) const
 		throw MethodeContainerException("size()");
 	}
 	return (true);
+}
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::value_type& MutantStack<T, Container>::top(void)
+{
+	// if (this->empty())
+	// 	throw EmptyContainerException();
+	try
+	{
+		return this->_c.back();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		throw MethodeContainerException("back()");
+	}
+}
+
+template <typename T, typename Container>
+const typename MutantStack<T, Container>::value_type& MutantStack<T, Container>::top(void) const
+{
+	// if (this->empty())
+	// 	throw EmptyContainerException();
+	try
+	{
+		return this->_c.back();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		throw MethodeContainerException("back()");
+	}
+}
+
+template <typename T, typename Container>
+void	MutantStack<T, Container>::push_back(const value_type& __x)
+{
+	this->push(__x);
+}
+
+template <typename T, typename Container>
+void	MutantStack<T, Container>::push(const value_type& __x)
+{
+	try
+	{
+		this->_c.push_back(__x);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		throw MethodeContainerException("push_back()");
+	}
+}
+
+template <typename T, typename Container>
+void	MutantStack<T, Container>::pop(void)
+{
+	try
+	{
+		if (this->empty() == false)
+			this->_c.pop_back();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		throw MethodeContainerException("pop_back()");
+	}
 }
 
 #endif

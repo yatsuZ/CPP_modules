@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:32:25 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/11 15:12:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/11 19:48:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 
 ////////////
+
 template <class T, class Container = std::deque<T> >
 class MutantStack
 {
@@ -37,13 +38,14 @@ public:
 	typedef T value_type;
 	typedef Container container_type;
 	typedef typename Container::size_type size_type;
+	typedef MutantStack<T, Container> self_type;
 private:
 	class MethodeContainerException : public std::exception
 	{
 	private:
 		std::string _message;
 	public:
-		NotFoundMethodeContainerException(const std::string &additionalInfo)
+		MethodeContainerException(const std::string &additionalInfo)
 		{
 			_message = std::string("the MutantStack container had a problem with the method: " MAGENTA) + additionalInfo + NOCOLOR + "." ;
 		}
@@ -57,8 +59,17 @@ private:
 			return _message.c_str();
 		}
 	};
+	class EmptyContainerException : public std::exception
+	{
+		virtual const char *what() const throw()
+		{
+			return (RED "the MutantStack container is empty." NOCOLOR);
+		}
+	};
+	void				push_back(const value_type& __x);
 
 	Container _c;
+
 public:
 	MutantStack(void);
 	MutantStack(const MutantStack &src);
@@ -66,12 +77,53 @@ public:
 	MutantStack	&operator=(const MutantStack &src);
 	~MutantStack(void);
 
-	bool 		empty() const;
-	size_type	size(void) const;
+	bool 				empty() const;
+	size_type			size(void) const;
+	value_type& 		top();
+	const value_type&	top() const;
+	void				push(const value_type& __x);
+	void 				pop();
 
 };
 
-#include "MutantStack.tpp"
+/////////////////////// Each of these operator overloads calls the same operator on the underlying container objects.
 
+template <typename T, typename Container>
+bool operator== (const MutantStack<T, Container> & lhs, const MutantStack<T, Container> & rhs)
+{
+	return (lhs._c == rhs._c);
+}
+
+template <typename T, typename Container>
+bool operator!= (const MutantStack<T, Container> & lhs, const MutantStack<T, Container> & rhs)
+{
+	return (lhs._c != rhs._c);
+}
+
+template <typename T, typename Container>
+bool operator< (const MutantStack<T, Container> & lhs, const MutantStack<T, Container> & rhs)
+{
+	return (lhs._c < rhs._c);
+}
+
+template <typename T, typename Container>
+bool operator<= (const MutantStack<T, Container> & lhs, const MutantStack<T, Container> & rhs)
+{
+	return (lhs._c <= rhs._c);
+}
+
+template <typename T, typename Container>
+bool operator> (const MutantStack<T, Container> & lhs, const MutantStack<T, Container> & rhs)
+{
+	return (lhs._c > rhs._c);
+}
+
+template <typename T, typename Container>
+bool operator>= (const MutantStack<T, Container> & lhs, const MutantStack<T, Container> & rhs)
+{
+	return (lhs._c >= rhs._c);
+}
+
+#include "MutantStack.tpp"
 
 #endif
