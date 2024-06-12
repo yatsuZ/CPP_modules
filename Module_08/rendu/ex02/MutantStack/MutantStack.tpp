@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:51:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/11 19:28:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/12 18:55:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ MutantStack<T, Container>::MutantStack(void): _c(Container())
 }
 
 template <typename T, typename Container>
-MutantStack<T, Container>::MutantStack(const MutantStack &src)
+MutantStack<T, Container>::MutantStack(const MutantStack &src): std::stack<T, Container>(src)
 {
 	*this = src;
 }
@@ -145,6 +145,36 @@ void	MutantStack<T, Container>::pop(void)
 	{
 		std::cerr << e.what() << '\n';
 		throw MethodeContainerException("pop_back()");
+	}
+}
+
+////////////////
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::iterator MutantStack<T, Container>::begin(void)
+{
+	try
+	{
+		return (this->_c.begin());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		throw MethodeContainerException("begin()");
+	}
+}
+
+template <typename T, typename Container>
+typename MutantStack<T, Container>::iterator	MutantStack<T, Container>::end(void)
+{
+	try
+	{
+		return (this->_c.end());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		throw MethodeContainerException("end()");
 	}
 }
 

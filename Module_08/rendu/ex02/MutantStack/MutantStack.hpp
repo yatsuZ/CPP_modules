@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:32:25 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/11 19:48:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/12 18:42:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <deque>
 #include <exception>
+#include <vector>
+#include <stack>
 
 #define NOCOLOR "\033[0m"
 #define RED "\033[31m"
@@ -31,14 +33,14 @@
 ////////////
 
 template <class T, class Container = std::deque<T> >
-class MutantStack
+class MutantStack : public std::stack<T, Container>
 {
 public:
 	// Types membres
 	typedef T value_type;
 	typedef Container container_type;
-	typedef typename Container::size_type size_type;
-	typedef MutantStack<T, Container> self_type;
+	typedef typename Container::size_type	size_type;
+	typedef typename Container::iterator	iterator;
 private:
 	class MethodeContainerException : public std::exception
 	{
@@ -84,6 +86,10 @@ public:
 	void				push(const value_type& __x);
 	void 				pop();
 
+///////////////////
+	iterator	begin(void);
+	iterator	end(void);
+
 };
 
 /////////////////////// Each of these operator overloads calls the same operator on the underlying container objects.
@@ -125,5 +131,26 @@ bool operator>= (const MutantStack<T, Container> & lhs, const MutantStack<T, Con
 }
 
 #include "MutantStack.tpp"
+
+////////////////////////////////////////////////////////////////
+
+template <class T, class Container = std::deque<T> >
+class MutantStack2 : public std::stack<T, Container>
+{
+public:
+	MutantStack2(void){};
+	MutantStack2( const MutantStack2& src ): std::stack<T, Container>(src) {}
+	~MutantStack2(void){};
+	MutantStack2&	operator=( const MutantStack2& src )
+	{
+		std::stack< T, Container >::operator=( src );
+		return *this;
+	}
+
+	typedef typename Container::iterator	iterator;
+	iterator	begin() { return this->c.begin(); }
+	iterator	end() { return this->c.end(); }
+
+};
 
 #endif
