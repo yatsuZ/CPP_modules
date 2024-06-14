@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:10:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/12 21:22:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/14 18:01:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #pragma once
 
 #include <iostream>
+#include <string>
+#include <map>
+#include <fstream>
+#include <sstream>
+#include <stdexcept>
+#include <cstdlib>
 
 #define NOCOLOR "\033[0m"
 #define RED "\033[31m"
@@ -25,4 +31,30 @@
 #define WHITE "\033[37m"
 #define PURPLE "\033[35m"
 
+class BitcoinExchange
+{
+private:
+	const std::string	_fileArg;
+	const std::map<std::string, float> _DataCsv;
+	const std::map<std::string, float> _FileData;
 
+///////////////////////////////////////////////// Exception
+	class CantOpenException;
+
+///////////////////////////////////////////////// AUTRES
+	const std::map<std::string, float> _getDataCsv(void) const;
+	const std::map<std::string, float> _getFileData(void) const;
+	
+/////////////////////////////////////////////// Canonique + constructeur
+	BitcoinExchange(void);
+public:
+	BitcoinExchange(int argc, char **argv);
+	BitcoinExchange(const BitcoinExchange &src);
+	BitcoinExchange &operator=(const BitcoinExchange &src);
+	~BitcoinExchange();
+
+///////////////////////////////////////////////// AUTRES
+	void	info(void) const;
+	void	infoDataCsv(void) const;
+
+};
