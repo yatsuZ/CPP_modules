@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:49:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/14 16:32:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/17 00:41:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ int main(int argc, char **argv)
 	{
 		BitcoinExchange DataFileBitcoin(argc, argv);
 
-		DataFileBitcoin.info();
+		DataFileBitcoin.exec();
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << "Error: " RED << e.what() << NOCOLOR << '\n';
 	}
-	
 	return 0;
 }

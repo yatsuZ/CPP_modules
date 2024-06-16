@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:10:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/14 18:40:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/17 00:44:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ class BitcoinExchange::CantOpenException : public std::exception
 {
 		virtual const char* what(void) const throw()
 		{
-			return (RED "Error: could not open file." NOCOLOR);
+			return (RED "could not open file." NOCOLOR);
 		}
 };
 
 /////////////////////////////////////////////// Canonique + constructeur
 
-BitcoinExchange::BitcoinExchange(void): _fileArg(NULL)
+BitcoinExchange::BitcoinExchange(void):
+_fileArg(NULL),
+_DataCsv(std::vector<std::string>()),
+_FileData(std::vector<std::string>())
 {
 }
 
@@ -35,7 +38,10 @@ _FileData(this->_getFileData())
 {
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &src): _fileArg(src._fileArg)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &src):
+_fileArg(src._fileArg),
+_DataCsv(src._DataCsv),
+_FileData(src._FileData)
 {
 	*this = src;
 }
@@ -55,71 +61,87 @@ BitcoinExchange::~BitcoinExchange()
 
 /////////////////////////////////////////////// Autre
 
-const std::map<std::string, float> BitcoinExchange::_getDataCsv(void) const
+bool	BitcoinExchange::_verifDate(const std::string DateStr, const std::string FirstDate, const std::string LastDate)const
 {
-	std::map<std::string, float> newMap;
-	std::ifstream	input("./data.csv");
-	std::string		line;
-	bool			first = true;
-	if (!input.is_open())
-		throw std::runtime_error("Cannot open file");
-
-	while (std::getline(input, line))
-	{
-		std::istringstream iss(line);
-		std::string date;
-		std::string valueStr;
-		
-		if (std::getline(iss, date, ',') && std::getline(iss, valueStr) && !first)
-		{
-			// Remove leading and trailing whitespace from date and valueStr
-			date.erase(0, date.find_first_not_of(" \n\r\t"));
-			date.erase(date.find_last_not_of(" \n\r\t") + 1);
-			valueStr.erase(0, valueStr.find_first_not_of(" \n\r\t"));
-			valueStr.erase(valueStr.find_last_not_of(" \n\r\t") + 1);
-			try
-			{
-				errno = 0;
-				char* endptr;
-				float value = static_cast<float>(strtof(valueStr.c_str(), &endptr));
-				if (errno == ERANGE || endptr == valueStr.c_str() || *endptr != '\0')
-					throw std::invalid_argument("Fail Conversion Invalide input");
-				newMap.insert(std::make_pair(date, value));
-			}
-			catch (const std::invalid_argument& e)
-			{
-				std::cerr << "Invalid value: " << valueStr << std::endl;
-			}
-		}
-		else if (!true)
-			std::cerr << "Invalid line format: " << line << std::endl;
-		first = false;
-	}
-	input.close();
-	return (newMap);
+	if (DateStr.empty() || DateStr.length() != 10 || DateStr < FirstDate || DateStr > LastDate )
+		return (false);
+	const std::string year = DateStr.substr(0, 4);
+	const std::string month = DateStr.substr(5, 2);
+	const std::string day = DateStr.substr(8, 2);
+	if (day.empty() || month.empty() || day < "01" || day > "31" || month < "01" || month > "12" || DateStr[4] != '-' || DateStr[7] != '-')
+		return (false);
+	return (true);
 }
 
-const std::map<std::string, float> BitcoinExchange::_getFileData(void) const
+// pas de verification pour data csv
+const std::vector<std::string> BitcoinExchange::_getDataCsv(void) const
 {
-	std::map<std::string, float> newMap;
-	return (newMap);
+	std::vector<std::string> newVector;
+	std::ifstream	input("./data.csv");
+	std::string		line;
+
+	if (!input.is_open())
+		throw BitcoinExchange::CantOpenException();
+	while (std::getline(input, line))
+	{
+		newVector.push_back(line);
+	}
+	input.close();
+	return (newVector);
+}
+
+const std::vector<std::string> BitcoinExchange::_getFileData(void) const
+{
+	std::vector<std::string> newVector;
+	std::ifstream	input(this->_fileArg.c_str());
+	std::string		line;
+
+	if (!input.is_open())
+		throw BitcoinExchange::CantOpenException();
+	while (std::getline(input, line))
+	{
+		newVector.push_back(line);
+	}
+	input.close();
+	return (newVector);
 }
 
 void	BitcoinExchange::info(void) const
 {
 	std::cout << YELLOW "INFO du BitcoinExchange :" NOCOLOR << std::endl;
 	std::cout << MAGENTA "File argument = " NOCOLOR << this->_fileArg << std::endl;
-	this->infoDataCsv();
+	this->infoDataCsv(10);
+	std::cout << "---------------------------------------------" << std::endl<< std::endl;
+	this->infoDataInput(10);
 	std::cout << "---------------------------------------------" << std::endl<< std::endl;
 }
 
-void	BitcoinExchange::infoDataCsv(void) const
+void	BitcoinExchange::infoDataCsv(int loop) const
 {
-	std::map<std::string, float>::const_iterator it = this->_DataCsv.begin();
-	
-	for (; it != this->_DataCsv.end(); ++it)
-	{
-		std::cout << "Date : " << it->first << ", exchange_rate : " << it->second << std::endl;
-	}
+	std::vector<std::string>::const_iterator it = this->_DataCsv.begin();
 
+	for (int i = 0; it != this->_DataCsv.end() && (loop > i); ++it, i++)
+	{
+		std::cout << *it << std::endl;
+	}
+}
+
+void	BitcoinExchange::infoDataInput(int loop) const
+{
+	std::vector<std::string>::const_iterator it = this->_FileData.begin();
+
+	for (int i = 0; it != this->_DataCsv.end() && (loop > i); ++it, i++)
+	{
+		std::cout << *it << std::endl;
+	}
+}
+
+
+/////////////////////////
+
+void	BitcoinExchange::exec(void) const
+{
+	std::cout << "Pour chaque ligne de input file prendre la date et la valeur" << std::endl;
+	std::cout << "Mais avant verifier que chaque ligne et correcte genre comment par date | value et les autre respecte les input" << std::endl;
+	std::cout << "Puis verifier positive number et que sa ne depasse pas mille et trouver la date la plus proche" << std::endl;
 }
