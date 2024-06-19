@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:10:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/17 00:40:57 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/19 18:10:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ private:
 	const std::vector<std::string> _getFileData(void) const;
 
 
-	bool	_verifInputFile(void)const;
-	bool	_verifLine(const std::string line, bool firstLine)const;
-	bool	_verifDate(const std::string DateStr, const std::string FirstDate, const std::string LastDate)const;
-	bool	_verifValue(const std::string DateStr, const std::string FirstDate, const std::string LastDate)const;
+	void	_verifLine(const std::string line, std::string &date, float &value)const;
+	bool	_verifDate(const std::string DateStr)const;
 
-	const std::string	_getDateByLine(const std::string line);
-	float				_getValueByLine(const std::string line);
-	float				_getTauxDechange(const std::string date);
+	std::string					_getDateByLine(const std::string line) const;
+	float						_getValueByLine(const std::string line) const;
+	float						_getTauxDechange(const std::string date) const;
+	const std::string			_getLastDate(void) const;
+	const std::string			_getFirstDate(void) const;
 /////////////////////////////////////////////// Canonique + constructeur
 	BitcoinExchange(void);
 public:

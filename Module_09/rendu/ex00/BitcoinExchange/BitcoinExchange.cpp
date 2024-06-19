@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:10:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/17 00:44:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/19 18:57:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,26 @@ BitcoinExchange::~BitcoinExchange()
 
 /////////////////////////////////////////////// Autre
 
-bool	BitcoinExchange::_verifDate(const std::string DateStr, const std::string FirstDate, const std::string LastDate)const
+const std::string			BitcoinExchange::_getFirstDate(void) const
 {
-	if (DateStr.empty() || DateStr.length() != 10 || DateStr < FirstDate || DateStr > LastDate )
+	std::vector<std::string>::const_iterator	line = (this->_DataCsv.begin());
+	line++;
+	std::string	Date = (*line).substr(0, 10);
+	return (Date);
+}
+
+const std::string			BitcoinExchange::_getLastDate(void) const
+{
+	std::reverse_iterator<std::vector<std::string>::const_iterator>	line = (this->_DataCsv.rbegin());
+	std::string	Date = (*line).substr(0, 10);
+	return (Date);
+}
+
+
+bool	BitcoinExchange::_verifDate(const std::string DateStr) const
+{
+
+	if (DateStr.empty() || DateStr.length() != 10)
 		return (false);
 	const std::string year = DateStr.substr(0, 4);
 	const std::string month = DateStr.substr(5, 2);
@@ -130,7 +147,7 @@ void	BitcoinExchange::infoDataInput(int loop) const
 {
 	std::vector<std::string>::const_iterator it = this->_FileData.begin();
 
-	for (int i = 0; it != this->_DataCsv.end() && (loop > i); ++it, i++)
+	for (int i = 0; it != this->_FileData.end() && (loop > i); ++it, i++)
 	{
 		std::cout << *it << std::endl;
 	}
@@ -141,7 +158,80 @@ void	BitcoinExchange::infoDataInput(int loop) const
 
 void	BitcoinExchange::exec(void) const
 {
-	std::cout << "Pour chaque ligne de input file prendre la date et la valeur" << std::endl;
-	std::cout << "Mais avant verifier que chaque ligne et correcte genre comment par date | value et les autre respecte les input" << std::endl;
-	std::cout << "Puis verifier positive number et que sa ne depasse pas mille et trouver la date la plus proche" << std::endl;
+	std::string	DateInputFile;
+	float		value, exchangeRate, result;
+	std::vector<std::string>::const_iterator it = this->_FileData.begin();
+
+	if (*it != "date | value")
+		throw std::invalid_argument("Invalide header of " + this->_fileArg + YELLOW "\n\""+ *it +"\"" NOCOLOR " is bad header thats the good header\n" GREEN "\"date | value\"");
+	it++;
+	for (; it != this->_FileData.end(); ++it)
+	{
+		try
+		{
+			this->_verifLine(*it, DateInputFile, value);
+			exchangeRate = this->_getTauxDechange(DateInputFile);
+			result = value * exchangeRate;
+			// std::cout << DateInputFile << " => " << value << " * " << exchangeRate << " = " << result << std::endl;
+			std::cout << DateInputFile << " => " << value << " = " << result << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << "Error: " RED << e.what() << NOCOLOR << '\n';
+		}
+	}
+}
+
+std::string			BitcoinExchange::_getDateByLine(const std::string line) const
+{
+	std::string	Date = line.substr(0, 10);
+	if (!this->_verifDate(Date))
+		throw std::invalid_argument(("bad input => " YELLOW) + line);
+	if (Date < this->_getFirstDate())
+		throw std::invalid_argument(("Invalide Date => " YELLOW) + line);
+	return (Date);
+}
+
+float				BitcoinExchange::_getValueByLine(const std::string line) const
+{
+	std::string	valueStr = line.substr(12);
+	valueStr.erase(0, valueStr.find_first_not_of(" \t"));
+	valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
+	errno = 0;
+	char* endptr;
+	float value = static_cast<float>(strtof(valueStr.c_str(), &endptr));
+	if (errno == ERANGE || endptr == valueStr.c_str() || *endptr != '\0')
+		throw std::invalid_argument(("bad input => " YELLOW) + line);
+	if (value < 0)
+		throw std::invalid_argument("not a positive number.");
+	if (value > 1000)
+		throw std::invalid_argument("too large a number.");
+	return (value);
+}
+
+void	BitcoinExchange::_verifLine(const std::string line, std::string &date, float &value)const
+{
+	date = this->_getDateByLine(line);
+	if (line[10] != ' ' || line[11] != '|' || line[12] != ' ')
+		throw std::invalid_argument(("bad input => " YELLOW) + line);
+	value = this->_getValueByLine(line);
+}
+
+float	BitcoinExchange::_getTauxDechange(const std::string date) const
+{
+	std::vector<std::string>::const_iterator it = this->_DataCsv.begin();
+
+	++it;
+	std::string	goodline = *it;
+	for (; it != this->_DataCsv.end() && (*it).substr(0, 11) < date; ++it)
+	{
+		goodline = *it;
+	}
+	std::string	valueStr = goodline.substr(11);
+	valueStr.erase(0, valueStr.find_first_not_of(" \t"));
+	valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
+	errno = 0;
+	char* endptr;
+	float value = static_cast<float>(strtof(valueStr.c_str(), &endptr));
+	return (value);
 }
