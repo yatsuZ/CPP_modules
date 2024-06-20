@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:59:35 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/07 19:25:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/20 20:09:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,16 @@ Span::Span(int n): _n(n), _contenair(NULL), _place(this->_n)
 	// std::cout << GREEN "Constructeur Span :" NOCOLOR " Parametric, n = " << n << std::endl;
 	if (this->_n == 0)
 		return ;
-	this->_contenair = new int[this->getN()];
+	try
+	{
+		this->_contenair = new int[this->getN()];
+	}
+	catch (const std::bad_alloc& e)
+	{
+		std::cerr << "Memory allocation failed: " << e.what() << '\n';
+		throw;
+	}
+
 	for (unsigned int i = 0; i < this->_n; i++)
 	{
 		this->_contenair[i] = int();

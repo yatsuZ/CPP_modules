@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:49:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/20 19:29:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/20 20:00:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,17 @@ void	ft_test01(void)
 
 void	ft_test02(void)
 {
-	unsigned int size = 10000;
+	unsigned int size = std::numeric_limits<int>::max();
 	std::cout << YELLOW "Test with "<< size << " value in Span" NOCOLOR << std::endl;
-	Span bcp(size);
-	srand(time(NULL));
-	for (unsigned int i = 0; i < size; i++)
-	{
-		const int value = rand();
-		bcp.addNumber(value);
-	}
 	try
 	{
+		Span bcp(size);
+		srand(time(NULL));
+		for (unsigned int i = 0; i < size; i++)
+		{
+			const int value = rand();
+			bcp.addNumber(value);
+		}
 		std::cout << "shortestSpan = " << bcp.shortestSpan() << std::endl;
 		std::cout << "longestSpan = " << bcp.longestSpan() << std::endl;
 		std::cout << "-----------------" << std::endl;
