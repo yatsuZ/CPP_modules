@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:49:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/07 19:27:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/20 19:29:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	ft_test03(void)
 int main(int argc, char **argv)
 {
 	static void (*ft[4])(void) = {ft_test00, ft_test01, ft_test02, ft_test03};
-	static std::string (selection[4]) = {"0", "1", "2", "3"};
+	static std::string selection[4] = {"0", "1", "2", "3"};
 
 
 	if (argc == 1)
