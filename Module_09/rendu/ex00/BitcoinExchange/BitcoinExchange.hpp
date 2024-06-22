@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:10:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/22 18:54:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/22 19:14:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 class BitcoinExchange
 {
 private:
-	const std::string										_fileArg;
+	const std::string				_fileArg;
 	const std::list<std::string>	_DataCsv;
 	const std::list<std::string>	_FileData;
 
