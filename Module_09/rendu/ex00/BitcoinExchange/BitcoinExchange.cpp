@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:10:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/19 18:57:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/22 18:54:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class BitcoinExchange::CantOpenException : public std::exception
 
 BitcoinExchange::BitcoinExchange(void):
 _fileArg(NULL),
-_DataCsv(std::vector<std::string>()),
-_FileData(std::vector<std::string>())
+_DataCsv(std::list<std::string>()),
+_FileData(std::list<std::string>())
 {
 }
 
@@ -50,7 +50,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src)
 {
 	if (this != &src)
 	{
-		// autre info a changer
+		//rien y a que des const
 	}
 	return (*this);
 }
@@ -63,7 +63,7 @@ BitcoinExchange::~BitcoinExchange()
 
 const std::string			BitcoinExchange::_getFirstDate(void) const
 {
-	std::vector<std::string>::const_iterator	line = (this->_DataCsv.begin());
+	std::list<std::string>::const_iterator	line = (this->_DataCsv.begin());
 	line++;
 	std::string	Date = (*line).substr(0, 10);
 	return (Date);
@@ -71,7 +71,7 @@ const std::string			BitcoinExchange::_getFirstDate(void) const
 
 const std::string			BitcoinExchange::_getLastDate(void) const
 {
-	std::reverse_iterator<std::vector<std::string>::const_iterator>	line = (this->_DataCsv.rbegin());
+	std::reverse_iterator<std::list<std::string>::const_iterator>	line = (this->_DataCsv.rbegin());
 	std::string	Date = (*line).substr(0, 10);
 	return (Date);
 }
@@ -91,9 +91,9 @@ bool	BitcoinExchange::_verifDate(const std::string DateStr) const
 }
 
 // pas de verification pour data csv
-const std::vector<std::string> BitcoinExchange::_getDataCsv(void) const
+const std::list<std::string> BitcoinExchange::_getDataCsv(void) const
 {
-	std::vector<std::string> newVector;
+	std::list<std::string> newVector;
 	std::ifstream	input("./data.csv");
 	std::string		line;
 
@@ -107,9 +107,9 @@ const std::vector<std::string> BitcoinExchange::_getDataCsv(void) const
 	return (newVector);
 }
 
-const std::vector<std::string> BitcoinExchange::_getFileData(void) const
+const std::list<std::string> BitcoinExchange::_getFileData(void) const
 {
-	std::vector<std::string> newVector;
+	std::list<std::string> newVector;
 	std::ifstream	input(this->_fileArg.c_str());
 	std::string		line;
 
@@ -135,7 +135,7 @@ void	BitcoinExchange::info(void) const
 
 void	BitcoinExchange::infoDataCsv(int loop) const
 {
-	std::vector<std::string>::const_iterator it = this->_DataCsv.begin();
+	std::list<std::string>::const_iterator it = this->_DataCsv.begin();
 
 	for (int i = 0; it != this->_DataCsv.end() && (loop > i); ++it, i++)
 	{
@@ -145,7 +145,7 @@ void	BitcoinExchange::infoDataCsv(int loop) const
 
 void	BitcoinExchange::infoDataInput(int loop) const
 {
-	std::vector<std::string>::const_iterator it = this->_FileData.begin();
+	std::list<std::string>::const_iterator it = this->_FileData.begin();
 
 	for (int i = 0; it != this->_FileData.end() && (loop > i); ++it, i++)
 	{
@@ -160,7 +160,7 @@ void	BitcoinExchange::exec(void) const
 {
 	std::string	DateInputFile;
 	float		value, exchangeRate, result;
-	std::vector<std::string>::const_iterator it = this->_FileData.begin();
+	std::list<std::string>::const_iterator it = this->_FileData.begin();
 
 	if (*it != "date | value")
 		throw std::invalid_argument("Invalide header of " + this->_fileArg + YELLOW "\n\""+ *it +"\"" NOCOLOR " is bad header thats the good header\n" GREEN "\"date | value\"");
@@ -219,7 +219,7 @@ void	BitcoinExchange::_verifLine(const std::string line, std::string &date, floa
 
 float	BitcoinExchange::_getTauxDechange(const std::string date) const
 {
-	std::vector<std::string>::const_iterator it = this->_DataCsv.begin();
+	std::list<std::string>::const_iterator it = this->_DataCsv.begin();
 
 	++it;
 	std::string	goodline = *it;

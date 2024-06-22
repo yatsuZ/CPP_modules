@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:51:15 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/10 21:33:10 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/22 15:57:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <iterator>
 #include <algorithm>
 #include <limits>
+#include <list>
 #include <vector>
 
 #define NOCOLOR "\033[0m"
@@ -34,13 +35,13 @@
 class Span
 {
 private:
-	unsigned int	_n;
-	int	*_contenair;
-	unsigned int	_place;
-	unsigned int	getN(void) const;
-	unsigned int	getPlace(void) const;
-	void			setN(const int n);
-	int				*getContenair(void) const;
+	unsigned int		_n;
+	std::list<int>	 _contenair;
+	unsigned int		_place;
+	unsigned int		getN(void) const;
+	unsigned int		getPlace(void) const;
+	void				setN(const int n);
+	std::list<int>	getContenair(void) const;
 	class ToShort : public std::exception
 	{
 	private:
@@ -71,16 +72,26 @@ private:
 	Span();
 public:
 	void			showSpan(void) const;
-	Span(int n);
+	Span(unsigned int n);
 	~Span();
 	Span(const Span &src);
 	Span			&operator=(const Span &src);
 
 	long				shortestSpan(void) const;
 	long				longestSpan(void) const;
-	void			addNumber(const int nbr);
-	void			addNumbers(const std::vector<int>& numbers);
-
+	void				addNumber(const int nbr);
+	template <typename T>
+	void				addNumbers(const T& numbers);
 };
+
+template <typename T>
+void			Span::addNumbers(const T& numbers)
+{
+	for (typename T::const_iterator it = numbers.begin(); it != numbers.end() && this->getPlace(); ++it)
+	{
+		this->addNumber(*it);
+	}
+}
+
 
 #endif

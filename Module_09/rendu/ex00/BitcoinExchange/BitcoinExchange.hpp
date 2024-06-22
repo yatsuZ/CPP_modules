@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:10:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/19 18:10:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/22 18:54:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <list>
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -36,16 +36,15 @@ class BitcoinExchange
 {
 private:
 	const std::string										_fileArg;
-	const std::vector<std::string>	_DataCsv;
-	const std::vector<std::string>	_FileData;
+	const std::list<std::string>	_DataCsv;
+	const std::list<std::string>	_FileData;
 
 ///////////////////////////////////////////////// Exception
 	class CantOpenException;
 
 ///////////////////////////////////////////////// AUTRES
-	const std::vector<std::string> _getDataCsv(void) const;
-	const std::vector<std::string> _getFileData(void) const;
-
+	const std::list<std::string> _getDataCsv(void) const;
+	const std::list<std::string> _getFileData(void) const;
 
 	void	_verifLine(const std::string line, std::string &date, float &value)const;
 	bool	_verifDate(const std::string DateStr)const;

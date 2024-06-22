@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:05:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/04 16:49:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/22 16:01:05 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <deque>
+#include <limits>
 
 class NotFoundException : public std::exception
 {

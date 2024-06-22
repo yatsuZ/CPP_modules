@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:49:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/12 18:40:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/22 16:06:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,11 +209,8 @@ void	ft_testSubject2(void)
 	
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
-	(void)	argc;
-	(void)	argv;
-	
 	// ft_testConstrcutor();
 	// ft_testWrongContainer();
 	// ft_testMethodEmpty();

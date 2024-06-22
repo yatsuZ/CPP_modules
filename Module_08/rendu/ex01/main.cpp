@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:49:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/20 20:00:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/22 15:56:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_test01(void)
 
 void	ft_test02(void)
 {
-	unsigned int size = std::numeric_limits<int>::max();
+	unsigned int size = 10000;
 	std::cout << YELLOW "Test with "<< size << " value in Span" NOCOLOR << std::endl;
 	try
 	{
@@ -93,7 +93,7 @@ void	ft_test03(void)
 {
 	std::cout << YELLOW "Test with one call of init number in Span" NOCOLOR << std::endl;
 
-	static const int arr[] = {87, 0, 1, 12, 9, -1, 10000};
+	static const int arr[] = {87, 0, 1, 12, 9, -100, 10000, 100};
 	std::vector<int> numbers (arr, arr + sizeof(arr) / sizeof(arr[0]) );
 	Span allnumber(7);
 	allnumber.addNumbers(numbers);
