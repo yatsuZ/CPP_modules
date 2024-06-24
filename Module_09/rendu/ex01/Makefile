@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 17:07:15 by yzaoui            #+#    #+#              #
-#    Updated: 2024/06/22 19:29:01 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/06/24 15:37:04 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 ############### OBJ de Module 08 exo 01
 
 EX03_FILES =	main.cpp	\
-				./RPN/RPN.cpp
+				./RPN_source/RPN.cpp
 
 OBJ_PATH = obj/
 
@@ -27,7 +27,7 @@ RM = rm -rf
 CC = c++
 C_FLAGS = -std=c++98 -Wall -Wextra -Werror -g3
 
-PROGRAM_NAME = RPN.out
+PROGRAM_NAME = RPN
 
 ############### COMMANDE OBLIGATOIRE
 

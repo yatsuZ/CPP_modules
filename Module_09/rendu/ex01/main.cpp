@@ -6,23 +6,23 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:49:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/22 19:36:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/24 16:40:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./RPN/RPN.hpp"
+#include "./RPN_source/RPN.hpp"
 
 int main(int argc, char **argv)
 {
-	(void)	argc;
-	(void)	argv;
 	try
 	{
-		std::cout << "faire rpn." << std::endl;
+		RPN	test(argc, argv);
+
+		test.exec();
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Error: " RED << e.what() << NOCOLOR << '\n';
+		std::cout << "Error : " << e.what() << std::endl;
 	}
 	return 0;
 }

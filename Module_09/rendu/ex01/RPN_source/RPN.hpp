@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 19:30:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/22 19:37:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/24 19:16:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@
 class RPN
 {
 private:
-	std::stack<int>	_contenaire;
-	std::string		_last;
-	long			_value;
+	std::string			_Expression;
+	std::stack<long>	_contenaire;
 
-	std::stack<int>	_initContenaire(int argc, char **argv) const;
+	void	_adition(void);
+	void	_soustraction(void);
+	void	_multiplcation(void);
+	void	_division(void);
 
+	void	_verifExpression(void) const;
 	RPN(void);
 public:
 	RPN(int argc, char **argv);
@@ -43,7 +46,8 @@ public:
 	RPN &operator=(const RPN &src);
 	~RPN();
 
-	void	show(void) const;
+	void	show(bool) const;
+	void	showContenaire(void) const;
 	void	exec(void);
 };
 
