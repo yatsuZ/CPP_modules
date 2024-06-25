@@ -6,15 +6,15 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 19:30:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/24 19:16:19 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/25 17:50:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 # define RPN_HPP
 
-#include <iostream>
 #include <stack>
+#include <iostream>
 #include <exception>
 
 #define NOCOLOR "\033[0m"
