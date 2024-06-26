@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:49:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/26 01:23:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/26 01:33:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <limits>
 #include <cstdlib>
 #include <cerrno>
-#include <deque>
+#include <list>
 #include <vector>
 #include <ctime>
 
@@ -33,15 +33,15 @@ class PmergeMe
 {
 private:
 	std::vector<int>	_VectorTrie;
-	std::deque<int>		_DequeTrie;
+	std::list<int>		_ListTrie;
 	int	_nbrOfElement;
 
 	std::vector<int>		_sortVector(std::vector<int>::iterator First , std::vector<int>::iterator Last, size_t len);
-	std::deque<int>		_sortDeque(std::deque<int>::iterator First , std::deque<int>::iterator Last, size_t len);
+	std::list<int>		_sortList(std::list<int>::iterator First , std::list<int>::iterator Last, size_t len);
 
 
 	double	_sortVectorTime(void);
-	double	_sortDequeTime(void);
+	double	_sortListTime(void);
 
 	int	_strToInt(std::string) const;
 	
@@ -55,7 +55,7 @@ public:
 	PmergeMe &operator=(const PmergeMe &src);
 	~PmergeMe();
 
-	void exec(void);
+	void exec(bool);
 };
 
 #endif
