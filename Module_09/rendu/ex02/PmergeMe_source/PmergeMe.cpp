@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:49:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/06/26 02:15:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/06/27 17:53:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ std::list<int>	PmergeMe::_sortList(std::list<int>::iterator First , std::list<in
 	size_t	moitier_Droite = len / 2;
 	size_t	moitier_Gauche = len - moitier_Droite;
 	std::list<int>::iterator LastLeft = First;
-	std::advance(LastLeft, moitier_Gauche);
+	std::advance(LastLeft, moitier_Gauche - 1);
 	std::list<int>::iterator	FirstRight = LastLeft;
 	FirstRight++;
 
